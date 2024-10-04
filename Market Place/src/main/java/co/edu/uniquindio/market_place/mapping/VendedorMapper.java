@@ -1,7 +1,7 @@
 package co.edu.uniquindio.market_place.mapping;
 
 import co.edu.uniquindio.market_place.model.Vendedor;
-import co.edu.uniquindio.market_place.model.VendedorDTO;
+import co.edu.uniquindio.market_place.model.dto.VendedorDTO;
 
 public class VendedorMapper {
 

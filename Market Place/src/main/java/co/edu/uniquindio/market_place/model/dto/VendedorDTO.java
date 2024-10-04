@@ -1,4 +1,6 @@
-package co.edu.uniquindio.market_place.model;
+package co.edu.uniquindio.market_place.model.dto;
+
+import co.edu.uniquindio.market_place.model.Producto;
 
 import java.util.List;
 
