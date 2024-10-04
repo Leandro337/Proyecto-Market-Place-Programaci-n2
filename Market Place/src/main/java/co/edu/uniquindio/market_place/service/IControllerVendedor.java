@@ -9,5 +9,5 @@ public interface IControllerVendedor {
     List<Vendedor> obtenerVendedor();
     boolean agregarVendedor(Vendedor vendedor);
     boolean eliminarVendedor(Vendedor vendedor);
-    boolean actualizarVendedor(String cedula);
+    boolean actualizarVendedor(String cedula, Vendedor vendedor);
 }

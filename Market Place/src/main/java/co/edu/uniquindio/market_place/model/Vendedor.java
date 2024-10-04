@@ -1,11 +1,10 @@
 package co.edu.uniquindio.market_place.model;
 
-import co.edu.uniquindio.market_place.service.IVendedorCRUD;
+import co.edu.uniquindio.market_place.model.builder.VendedorBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Vendedor implements IVendedorCRUD {
+public class Vendedor {
 
     private String nombre;
     private String apellido;
@@ -26,6 +25,10 @@ public class Vendedor implements IVendedorCRUD {
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.productos = productos;
+    }
+
+    public static VendedorBuilder builder() {
+        return new VendedorBuilder();
     }
 
     public String getNombre() {
@@ -95,30 +98,5 @@ public class Vendedor implements IVendedorCRUD {
                 ", contraseña='" + contraseña + '\'' +
                 ", productos=" + productos +
                 '}';
-    }
-
-    @Override
-    public boolean crearVendedor(Vendedor vendedor) {
-        return false;
-    }
-
-    @Override
-    public boolean eliminarVendedor(int id) {
-        return false;
-    }
-
-    @Override
-    public boolean actualizarVendedor(Vendedor vendedor) {
-        return false;
-    }
-
-    @Override
-    public Vendedor getVendedor(int id) {
-        return null;
-    }
-
-    @Override
-    public ArrayList<Vendedor> getAllVendedor() {
-        return null;
     }
 }
