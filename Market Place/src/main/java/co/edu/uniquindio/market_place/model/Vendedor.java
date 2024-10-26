@@ -2,6 +2,7 @@ package co.edu.uniquindio.market_place.model;
 
 import co.edu.uniquindio.market_place.model.builder.VendedorBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Vendedor {
@@ -12,19 +13,21 @@ public class Vendedor {
     private String direccion;
     private String usuario;
     private String contraseña;
-    private List<Producto> productos;
+    private RollUsuario rol;
+    private List<Producto> listaProductos;
+    private List<Vendedor> listaContactos;
 
-    public Vendedor() {
-    }
 
-    public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contraseña, List<Producto> productos) {
+    public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contraseña, RollUsuario rol) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.direccion = direccion;
         this.usuario = usuario;
         this.contraseña = contraseña;
-        this.productos = productos;
+        this.rol = rol;
+        this.listaProductos = new ArrayList<>();
+        this.listaContactos = new ArrayList<>();
     }
 
     public static VendedorBuilder builder() {
@@ -79,12 +82,28 @@ public class Vendedor {
         this.contraseña = contraseña;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public RollUsuario getRol() {
+        return rol;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setRol(RollUsuario rol) {
+        this.rol = rol;
+    }
+
+    public List<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(List<Producto> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
+    public List<Vendedor> getListaContactos() {
+        return listaContactos;
+    }
+
+    public void setListaContactos(List<Vendedor> listaContactos) {
+        this.listaContactos = listaContactos;
     }
 
     @Override
@@ -96,7 +115,7 @@ public class Vendedor {
                 ", direccion='" + direccion + '\'' +
                 ", usuario='" + usuario + '\'' +
                 ", contraseña='" + contraseña + '\'' +
-                ", productos=" + productos +
+                ", productos=" + listaProductos +
                 '}';
     }
 }

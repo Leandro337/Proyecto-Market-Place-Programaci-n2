@@ -3,8 +3,9 @@ package co.edu.uniquindio.market_place.model;
 import co.edu.uniquindio.market_place.service.IVendedorCRUD;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MarketPlace implements IVendedorCRUD {
+public abstract class MarketPlace implements IVendedorCRUD {
     private List<Vendedor> listaVendedores;
 
     public MarketPlace(){
@@ -12,20 +13,21 @@ public class MarketPlace implements IVendedorCRUD {
     }
 
     @Override
-    public boolean crearVendedor(String cedula, String nombre, String apellido, String direccion, String usuario, String contraseña) {
+    public boolean crearVendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contraseña, RollUsuario rol) {
         Vendedor vendedorEncontrado = verificarVendedor(cedula);
 
         if (vendedorEncontrado == null) {
-            Vendedor vendedor = Vendededor.builder()
+            Vendedor vendedor = Vendedor.builder()
                     .nombre(nombre)
                     .cedula(cedula)
                     .apellido(apellido)
                     .usuario(usuario)
                     .contraseña(contraseña)
                     .direccion(direccion)
+                    .rol(rol)
                     .build();
 
-            getListVendedores().add(vendedor);
+            getListaVendedores().add(vendedor);
 
             return true;
         }
@@ -44,7 +46,7 @@ public class MarketPlace implements IVendedorCRUD {
     }
 
     @Override
-    public boolean actualizarVendedor (String nombre, String apellido, String direccion, String usuario, String contraseña){
+    public boolean actualizarVendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contraseña, RollUsuario rol){
         Vendedor vendedorEncontrado = verificarVendedor(cedula);
         if (vendedorEncontrado != null) {
             vendedorEncontrado.setNombre(nombre);
@@ -59,17 +61,18 @@ public class MarketPlace implements IVendedorCRUD {
 
 
     @Override
-    public Vendedor obtenerVendedor(int cedula) {
+    public String obtenerVendedor(int cedula) {
         for(Vendedor vendedor : listaVendedores) {
-            if (vendedor.getCedula().equels(cedula)) {
+            if (vendedor.getCedula().equals(cedula)) {
                 return vendedor.getNombre();
             }
         }
+        return null;
     }
 
 
     @Override
-    public boolean verificarVendedorExistente (String cedula){
+    public boolean verificarVendedorExistente(String cedula){
         if (verificarVendedor(cedula) == null){
             return true;
         }
@@ -89,7 +92,7 @@ public class MarketPlace implements IVendedorCRUD {
     }
 
     @Override
-    public List<Vendedor> listaVendedores() {
+    public List<Vendedor> getListaVendedores() {
         return listaVendedores;
     }
 
