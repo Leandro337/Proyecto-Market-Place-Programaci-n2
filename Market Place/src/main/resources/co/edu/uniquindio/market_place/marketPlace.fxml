@@ -24,7 +24,7 @@
                   <Button layoutX="366.0" layoutY="540.0" mnemonicParsing="false" text="Registrarse" />
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="292.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="356.0" layoutY="507.0" text="¿No tienes cuenta?" />
