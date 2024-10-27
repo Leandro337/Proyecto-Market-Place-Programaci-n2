@@ -5,14 +5,13 @@ public class Producto {
     private String imagen;
     private double precio;
     private String categoria;
-    private boolean estado;
+    private EstadoProducto estadoProducto;
 
-    public Producto(String nombre, String imagen, double precio, String categoria, boolean estado) {
+    public Producto(String nombre, String imagen, double precio, String categoria) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
         this.categoria = categoria;
-        this.estado = estado;
     }
 
     public String getNombre() {
@@ -47,11 +46,12 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public EstadoProducto getEstadoProducto() {
+        return estadoProducto;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setEstadoProducto(EstadoProducto estadoProducto) {
+        this.estadoProducto = estadoProducto;
     }
+
 }

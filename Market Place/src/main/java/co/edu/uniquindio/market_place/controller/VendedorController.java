@@ -1,40 +1,36 @@
 package co.edu.uniquindio.market_place.controller;
 
 import co.edu.uniquindio.market_place.factory.ModelFactory;
-import co.edu.uniquindio.market_place.mapping.dto.VendedorDTO;
+import co.edu.uniquindio.market_place.mapping.dto.VendedorDto;
 import co.edu.uniquindio.market_place.model.Vendedor;
-import co.edu.uniquindio.market_place.service.IControllerVendedor;
+import co.edu.uniquindio.market_place.service.IVendedorControllerService;
 
 import java.util.List;
 
-public class VendedorController implements IControllerVendedor {
+public class VendedorController implements IVendedorControllerService {
     ModelFactory modelFactory;
 
     public VendedorController() {
-        modelFactory = new ModelFactory();
-    }
-
-    public List<VendedorDTO> obtenerVendedores() {
-        return modelFactory.obtenerVendedores();
+        modelFactory = ModelFactory.getInstance();
     }
 
     @Override
-    public List<Vendedor> obtenerVendedor() {
-        return List.of();
+    public List <VendedorDto> getVendedoresDto(){
+    return modelFactory.getVendedoresDto();
     }
 
     @Override
-    public boolean agregarVendedor(Vendedor vendedor) {
-        return false;
+    public boolean agregarVendedor(VendedorDto vendedorDto) {
+        return modelFactory.agregarVendedor(vendedorDto);
     }
 
     @Override
-    public boolean eliminarVendedor(Vendedor vendedor) {
-        return false;
+    public boolean eliminarVendedor(String cedula) {
+        return modelFactory.eliminarVendedor(cedula);
     }
 
     @Override
-    public boolean actualizarVendedor(String cedula, Vendedor vendedor) {
-        return false;
+    public boolean actualizarVendedor(String cedulaActual, VendedorDto vendedorDto) {
+        return modelFactory.actualizarVendedor(cedulaActual, vendedorDto);
     }
 }

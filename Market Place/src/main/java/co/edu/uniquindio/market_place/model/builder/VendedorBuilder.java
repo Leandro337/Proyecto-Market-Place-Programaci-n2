@@ -1,7 +1,6 @@
 package co.edu.uniquindio.market_place.model.builder;
 
 import co.edu.uniquindio.market_place.model.Producto;
-import co.edu.uniquindio.market_place.model.RollUsuario;
 import co.edu.uniquindio.market_place.model.Vendedor;
 
 import java.util.ArrayList;
@@ -14,8 +13,7 @@ public class VendedorBuilder {
     protected String cedula;
     protected String direccion;
     protected String usuario;
-    protected String contraseña;
-    protected RollUsuario rol;
+    protected String contrasena;
     protected List<Producto> listaProductos;
 
     public VendedorBuilder nombre (String nombre) {
@@ -43,15 +41,11 @@ public class VendedorBuilder {
         return this;
     }
 
-    public VendedorBuilder contraseña (String cedula){
-        this.contraseña = contraseña;
+    public VendedorBuilder contrasena (String contrasena){
+        this.contrasena = contrasena;
         return this;
     }
 
-    public VendedorBuilder rol (RollUsuario rol){
-        this.rol = rol;
-        return this;
-    }
 
     public VendedorBuilder listaProductos (Producto listaProductos) {
         this.listaProductos = new ArrayList<Producto>();
@@ -59,6 +53,6 @@ public class VendedorBuilder {
     }
 
     public Vendedor build(){
-        return new Vendedor(nombre,apellido,cedula,direccion,usuario,contraseña,rol);
+        return new Vendedor(nombre,apellido,cedula,direccion,usuario,contrasena);
     }
 }
