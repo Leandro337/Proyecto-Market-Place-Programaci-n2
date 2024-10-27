@@ -24,18 +24,18 @@
                   <Button layoutX="366.0" layoutY="540.0" mnemonicParsing="false" text="Registrarse" />
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="292.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="356.0" layoutY="507.0" text="¿No tienes cuenta?" />
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="292.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-contraseña-48.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-contraseña.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="369.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-accede-redondeado-derecho-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-login.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>
@@ -47,7 +47,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -70,7 +70,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -94,7 +94,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -118,7 +118,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -142,7 +142,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -166,7 +166,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -190,7 +190,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -214,7 +214,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -238,7 +238,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
@@ -262,7 +262,7 @@
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+                        <Image url="@../../../../../java/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="92.0" layoutY="96.0" text="Nombre" />
