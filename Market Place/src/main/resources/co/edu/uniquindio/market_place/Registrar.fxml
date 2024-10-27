@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="274.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/iconos/icons-usuario.png" />
+            <Image url="@/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
          </image>
       </ImageView>
       <TextField layoutX="225.0" layoutY="146.0" promptText="Nombre" />

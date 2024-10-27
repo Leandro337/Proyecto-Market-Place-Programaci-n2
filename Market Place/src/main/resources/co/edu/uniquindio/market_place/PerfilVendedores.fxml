@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/iconos/icons-usuario.png" />
+            <Image url="@/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
          </image>
       </ImageView>
       <Label layoutX="92.0" layoutY="90.0" text="Nombre" />
@@ -28,7 +28,7 @@
       <Button layoutX="441.0" layoutY="501.0" mnemonicParsing="false" text="Like" />
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../Downloads/icons8-usuario-64.png" />
+            <Image url="@/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
          </image>
       </ImageView>
       <Label layoutX="92.0" layoutY="360.0" text="Nombre" />
