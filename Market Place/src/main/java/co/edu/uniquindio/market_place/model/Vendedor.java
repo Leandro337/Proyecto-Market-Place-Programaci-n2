@@ -12,22 +12,19 @@ public class Vendedor {
     private String cedula;
     private String direccion;
     private String usuario;
-    private String contraseña;
+    private String contrasena;
     private RollUsuario rol;
     private List<Producto> listaProductos;
     private List<Vendedor> listaContactos;
 
 
-    public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contraseña, RollUsuario rol) {
+    public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contrasena) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.direccion = direccion;
         this.usuario = usuario;
-        this.contraseña = contraseña;
-        this.rol = rol;
-        this.listaProductos = new ArrayList<>();
-        this.listaContactos = new ArrayList<>();
+        this.contrasena = contrasena;
     }
 
     public static VendedorBuilder builder() {
@@ -74,12 +71,12 @@ public class Vendedor {
         this.usuario = usuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public RollUsuario getRol() {
@@ -114,7 +111,8 @@ public class Vendedor {
                 ", cedula='" + cedula + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", usuario='" + usuario + '\'' +
-                ", contraseña='" + contraseña + '\'' +
+                ", contraseña='" + contrasena + '\'' +
+                ", rol= '" + rol + '\'' +
                 ", productos=" + listaProductos +
                 '}';
     }

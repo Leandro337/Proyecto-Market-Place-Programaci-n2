@@ -5,7 +5,7 @@ import co.edu.uniquindio.market_place.service.IVendedorCRUD;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class MarketPlace implements IVendedorCRUD {
+public class MarketPlace implements IVendedorCRUD {
     private List<Vendedor> listaVendedores;
 
     public MarketPlace(){
@@ -13,22 +13,9 @@ public abstract class MarketPlace implements IVendedorCRUD {
     }
 
     @Override
-    public boolean crearVendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contraseña, RollUsuario rol) {
-        Vendedor vendedorEncontrado = verificarVendedor(cedula);
-
-        if (vendedorEncontrado == null) {
-            Vendedor vendedor = Vendedor.builder()
-                    .nombre(nombre)
-                    .cedula(cedula)
-                    .apellido(apellido)
-                    .usuario(usuario)
-                    .contraseña(contraseña)
-                    .direccion(direccion)
-                    .rol(rol)
-                    .build();
-
-            getListaVendedores().add(vendedor);
-
+    public boolean crearVendedor(Vendedor newVendedor) {
+        if (newVendedor != null) {
+            getListaVendedores().add(newVendedor);
             return true;
         }
         return false;
@@ -37,23 +24,24 @@ public abstract class MarketPlace implements IVendedorCRUD {
 
     @Override
     public boolean eliminarVendedor(String cedula) {
-        Vendedor vendedorEncontrado = verificarVendedor(cedula);
-        if (vendedorEncontrado != null) {
-            getListaVendedores().remove(vendedorEncontrado);
-            return true;
+        for (Vendedor vendedor : getListaVendedores()) {
+            if (vendedor.getCedula().equals(cedula)) {
+                getListaVendedores().remove(vendedor);
+                return true;
+            }
         }
         return false;
     }
 
     @Override
-    public boolean actualizarVendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contraseña, RollUsuario rol){
-        Vendedor vendedorEncontrado = verificarVendedor(cedula);
-        if (vendedorEncontrado != null) {
-            vendedorEncontrado.setNombre(nombre);
-            vendedorEncontrado.setApellido(apellido);
-            vendedorEncontrado.setDireccion(direccion);
-            vendedorEncontrado.setUsuario(usuario);
-            vendedorEncontrado.setContraseña(contraseña);
+    public boolean actualizarVendedor(String cedula, Vendedor vendedor){
+        Vendedor vendedorExistente = buscarVendedor(cedula);
+        if (vendedorExistente != null) {
+            vendedorExistente.setNombre(vendedor.getNombre());
+            vendedorExistente.setApellido(vendedor.getApellido());
+            vendedorExistente.setDireccion(vendedor.getDireccion());
+            vendedorExistente.setUsuario(vendedor.getUsuario());
+            vendedorExistente.setContrasena(vendedor.getContrasena());
             return true;
         }
         return false;
@@ -61,10 +49,10 @@ public abstract class MarketPlace implements IVendedorCRUD {
 
 
     @Override
-    public String obtenerVendedor(int cedula) {
+    public Vendedor buscarVendedor(String cedula) {
         for(Vendedor vendedor : listaVendedores) {
             if (vendedor.getCedula().equals(cedula)) {
-                return vendedor.getNombre();
+                return vendedor;
             }
         }
         return null;
@@ -73,25 +61,20 @@ public abstract class MarketPlace implements IVendedorCRUD {
 
     @Override
     public boolean verificarVendedorExistente(String cedula){
-        if (verificarVendedor(cedula) == null){
-            return true;
-        }
-        return false;
-    }
-
-    public Vendedor verificarVendedor(String cedula) {
         Vendedor vendedorExistente = null;
-
         for (Vendedor vendedor : listaVendedores) {
             if (vendedor.getCedula().equals(cedula)) {
                 vendedorExistente = vendedor;
                 break;
             }
         }
-        return vendedorExistente;
+
+        if (vendedorExistente == null) {
+            return true;
+        }
+        return false;
     }
 
-    @Override
     public List<Vendedor> getListaVendedores() {
         return listaVendedores;
     }
