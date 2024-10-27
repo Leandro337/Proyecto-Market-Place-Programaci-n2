@@ -7,7 +7,18 @@ public class Chat {
 
     private List<Mensaje> mensajes;
 
-    public Chat(){
-        mensajes = new ArrayList<>();
+    public Chat() {
+    }
+
+    public Chat(List<Mensaje> mensajes) {
+        this.mensajes = mensajes;
+    }
+
+    public List<Mensaje> getMensajes() {
+        return mensajes;
+    }
+
+    public void setMensajes(List<Mensaje> mensajes) {
+        this.mensajes = mensajes;
     }
 }

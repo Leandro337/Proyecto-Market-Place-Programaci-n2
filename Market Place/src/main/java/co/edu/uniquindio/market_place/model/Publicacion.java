@@ -7,7 +7,10 @@ public class Publicacion {
     private List<Comentario> comentarios;
 
     public Publicacion() {
-        comentarios = new ArrayList<Comentario>();
+    }
+
+    public Publicacion(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 
     public List<Comentario> getComentarios() {
