@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MarketPlace implements IVendedorCRUD {
+    private final int claveAdmin = 1030;
     private List<Vendedor> listaVendedores;
 
     public MarketPlace(){
@@ -55,6 +56,7 @@ public class MarketPlace implements IVendedorCRUD {
                 return vendedor;
             }
         }
+        System.out.println("No se encontro el vendedor");
         return null;
     }
 
@@ -81,5 +83,9 @@ public class MarketPlace implements IVendedorCRUD {
 
     public void setListaVendedores(List<Vendedor> listaVendedores) {
         this.listaVendedores = listaVendedores;
+    }
+
+    public int getClaveAdmin() {
+        return claveAdmin;
     }
 }

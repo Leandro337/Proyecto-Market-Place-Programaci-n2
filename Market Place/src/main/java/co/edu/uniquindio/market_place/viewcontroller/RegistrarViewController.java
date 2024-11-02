@@ -53,7 +53,7 @@ public class RegistrarViewController {
     private void handleRegistrarAdmin() {
         String claveAdmin = claveAdminField.getText();
         // Lógica para registrar el administrador
-        System.out.println("Administrador registrado con clave: " + claveAdmin);
+        System.out.println("Administrador registrado.");
     }
 }
 
