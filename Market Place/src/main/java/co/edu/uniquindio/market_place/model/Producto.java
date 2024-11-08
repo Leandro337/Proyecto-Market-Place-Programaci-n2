@@ -1,5 +1,8 @@
 package co.edu.uniquindio.market_place.model;
 
+import co.edu.uniquindio.market_place.model.builder.ProductoBuilder;
+import co.edu.uniquindio.market_place.model.builder.VendedorBuilder;
+
 public class Producto {
     private String nombre;
     private String imagen;
@@ -12,6 +15,10 @@ public class Producto {
         this.imagen = imagen;
         this.precio = precio;
         this.categoria = categoria;
+    }
+
+    public static ProductoBuilder builder() {
+        return new ProductoBuilder();
     }
 
     public String getNombre() {
