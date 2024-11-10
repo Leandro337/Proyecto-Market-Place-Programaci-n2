@@ -1,11 +1,9 @@
 package co.edu.uniquindio.market_place.model;
 
-import co.edu.uniquindio.market_place.service.IVendedorCRUD;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarketPlace implements IVendedorCRUD {
+public class MarketPlace {
     private final int claveAdmin = 1030;
     private List<Vendedor> listaVendedores;
 
@@ -13,7 +11,6 @@ public class MarketPlace implements IVendedorCRUD {
         this.listaVendedores = new ArrayList<>();
     }
 
-    @Override
     public boolean crearVendedor(Vendedor newVendedor) {
         if (newVendedor != null) {
             getListaVendedores().add(newVendedor);
@@ -22,8 +19,6 @@ public class MarketPlace implements IVendedorCRUD {
         return false;
     }
 
-
-    @Override
     public boolean eliminarVendedor(String cedula) {
         for (Vendedor vendedor : getListaVendedores()) {
             if (vendedor.getCedula().equals(cedula)) {
@@ -34,7 +29,6 @@ public class MarketPlace implements IVendedorCRUD {
         return false;
     }
 
-    @Override
     public boolean actualizarVendedor(String cedula, Vendedor vendedor){
         Vendedor vendedorExistente = buscarVendedor(cedula);
         if (vendedorExistente != null) {
@@ -48,8 +42,6 @@ public class MarketPlace implements IVendedorCRUD {
         return false;
     }
 
-
-    @Override
     public Vendedor buscarVendedor(String cedula) {
         for(Vendedor vendedor : listaVendedores) {
             if (vendedor.getCedula().equals(cedula)) {
@@ -61,7 +53,6 @@ public class MarketPlace implements IVendedorCRUD {
     }
 
 
-    @Override
     public boolean verificarVendedorExistente(String cedula){
         Vendedor vendedorExistente = null;
         for (Vendedor vendedor : listaVendedores) {
