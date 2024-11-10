@@ -1,12 +1,12 @@
 package co.edu.uniquindio.market_place.model.builder;
 
 import co.edu.uniquindio.market_place.model.Producto;
-import co.edu.uniquindio.market_place.model.Vendedor;
+import co.edu.uniquindio.market_place.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VendedorBuilder {
+public class UsuarioBuilder {
 
     protected String nombre;
     protected String apellido;
@@ -15,50 +15,50 @@ public class VendedorBuilder {
     protected String usuario;
     protected String contrasena;
     protected List<Producto> listaProductos;
-    protected List<Vendedor> listaContactos;
+    protected List<Usuario> listaContactos;
 
-    public VendedorBuilder nombre (String nombre) {
+    public UsuarioBuilder nombre (String nombre) {
         this.nombre = nombre;
         return this;
     }
 
-    public VendedorBuilder apellido (String apellido) {
+    public UsuarioBuilder apellido (String apellido) {
         this.apellido = apellido;
         return this;
     }
 
-    public VendedorBuilder cedula (String cedula) {
+    public UsuarioBuilder cedula (String cedula) {
         this.cedula = cedula;
         return this;
     }
 
-    public VendedorBuilder direccion (String direccion) {
+    public UsuarioBuilder direccion (String direccion) {
         this.direccion = direccion;
         return this;
     }
 
-    public VendedorBuilder usuario (String usuario) {
+    public UsuarioBuilder usuario (String usuario) {
         this.usuario = usuario;
         return this;
     }
 
-    public VendedorBuilder contrasena (String contrasena){
+    public UsuarioBuilder contrasena (String contrasena){
         this.contrasena = contrasena;
         return this;
     }
 
 
-    public VendedorBuilder listaProductos (Producto listaProductos) {
+    public UsuarioBuilder listaProductos (Producto listaProductos) {
         this.listaProductos = new ArrayList<Producto>();
         return this;
     }
 
-    public VendedorBuilder listaContactos (Vendedor listaContactos) {
-        this.listaContactos = new ArrayList<Vendedor>();
+    public UsuarioBuilder listaContactos (Usuario listaContactos) {
+        this.listaContactos = new ArrayList<Usuario>();
         return this;
     }
 
-    public Vendedor build(){
-        return new Vendedor(nombre,apellido,cedula,direccion,usuario,contrasena);
+    public Usuario build(){
+        return new Usuario(nombre,apellido,cedula,direccion,usuario,contrasena);
     }
 }

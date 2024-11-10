@@ -1,14 +1,14 @@
 package co.edu.uniquindio.market_place.service;
 
-import co.edu.uniquindio.market_place.model.Vendedor;
+import co.edu.uniquindio.market_place.mapping.dto.UsuarioDto;
 
 import java.util.List;
 
 public interface IPerfilVendedoresController {
 
-    List<Vendedor> getVendedors();
-    boolean agregarVendedor(Vendedor vendedor);
-    boolean actualizarVendedor(Vendedor vendedor);
-    boolean eliminarVendedor(Vendedor vendedor);
+    List<UsuarioDto> getVendedoresDto();
+    boolean agregarVendedor(UsuarioDto vendedor);
+    boolean actualizarVendedor(String nombreActual, UsuarioDto vendedor);
+    boolean eliminarVendedor(String nombre);
 
 }

@@ -1,11 +1,10 @@
 package co.edu.uniquindio.market_place.model;
 
-import co.edu.uniquindio.market_place.model.builder.VendedorBuilder;
+import co.edu.uniquindio.market_place.model.builder.UsuarioBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Vendedor {
+public class Usuario {
 
     private String nombre;
     private String apellido;
@@ -15,10 +14,10 @@ public class Vendedor {
     private String contrasena;
     private RollUsuario rol;
     private List<Producto> listaProductos;
-    private List<Vendedor> listaContactos;
+    private List<Usuario> listaContactos;
 
 
-    public Vendedor(String nombre, String apellido, String cedula, String direccion, String usuario, String contrasena) {
+    public Usuario(String nombre, String apellido, String cedula, String direccion, String usuario, String contrasena) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
@@ -27,8 +26,8 @@ public class Vendedor {
         this.contrasena = contrasena;
     }
 
-    public static VendedorBuilder builder() {
-        return new VendedorBuilder();
+    public static UsuarioBuilder builder() {
+        return new UsuarioBuilder();
     }
 
     public String getNombre() {
@@ -95,11 +94,11 @@ public class Vendedor {
         this.listaProductos = listaProductos;
     }
 
-    public List<Vendedor> getListaContactos() {
+    public List<Usuario> getListaContactos() {
         return listaContactos;
     }
 
-    public void setListaContactos(List<Vendedor> listaContactos) {
+    public void setListaContactos(List<Usuario> listaContactos) {
         this.listaContactos = listaContactos;
     }
 

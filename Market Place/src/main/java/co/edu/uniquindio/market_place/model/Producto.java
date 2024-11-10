@@ -1,7 +1,6 @@
 package co.edu.uniquindio.market_place.model;
 
 import co.edu.uniquindio.market_place.model.builder.ProductoBuilder;
-import co.edu.uniquindio.market_place.model.builder.VendedorBuilder;
 
 public class Producto {
     private String nombre;

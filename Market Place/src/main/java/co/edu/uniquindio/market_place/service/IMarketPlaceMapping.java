@@ -1,9 +1,9 @@
 package co.edu.uniquindio.market_place.service;
 
 import co.edu.uniquindio.market_place.mapping.dto.ProductoDto;
-import co.edu.uniquindio.market_place.mapping.dto.VendedorDto;
+import co.edu.uniquindio.market_place.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.market_place.model.Producto;
-import co.edu.uniquindio.market_place.model.Vendedor;
+import co.edu.uniquindio.market_place.model.Usuario;
 
 import java.util.List;
 
@@ -13,7 +13,8 @@ public interface IMarketPlaceMapping {
     ProductoDto productoToProductoDto(Producto producto);
     Producto productoDtoToProducto(ProductoDto productoDto);
 
-    List<VendedorDto>getVendedoresDto (List<Vendedor> listaVendedores);
-    VendedorDto vendedorToVendedorDto (Vendedor vendedor);
-    Vendedor vendedorDtoToVendedor (VendedorDto vendedorDto);
+    List<UsuarioDto>getVendedoresDto (List<Usuario> listaVendedores);
+    UsuarioDto vendedorToVendedorDto (Usuario usuario);
+    Usuario vendedorDtoToVendedor (UsuarioDto usuarioDto);
+
 }

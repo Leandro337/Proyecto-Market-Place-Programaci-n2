@@ -1,6 +1,6 @@
 package co.edu.uniquindio.market_place.mapping.dto;
 
-public record VendedorDto(
+public record UsuarioDto(
         String nombre,
         String apellido,
         String cedula,

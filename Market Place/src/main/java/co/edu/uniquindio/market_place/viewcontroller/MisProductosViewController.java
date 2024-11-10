@@ -1,6 +1,5 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
-import co.edu.uniquindio.market_place.controller.MisProductosController;
 import co.edu.uniquindio.market_place.mapping.dto.ProductoDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -69,13 +68,6 @@ public class MisProductosViewController {
     @FXML
     void miPerfil(ActionEvent event) {
 
-    }
-
-    @FXML
-    void initialize() {
-        misProductosController = new MisProductosController();
-
-        initView();
     }
 
 }
