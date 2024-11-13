@@ -67,7 +67,7 @@ public class IniciarSesionViewController {
                 showMessage("Inicio de sesión", "Inicio de sesión exitoso", Alert.AlertType.INFORMATION);
                 cargarMarketPlace(usuario2);
             } else {
-                showMessage("Error", "Error al iniciar sesión", Alert.AlertType.ERROR);
+                showMessage("Error", "Error, el usuario no existe", Alert.AlertType.ERROR);
             }
         } else {
             showMessage("Error", "Ingrese todos los datos", Alert.AlertType.ERROR);
@@ -77,15 +77,15 @@ public class IniciarSesionViewController {
 
     private void cargarMarketPlace(Usuario usuario2) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/PerfilVendedores.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MiPerfil.fxml"));
             Parent root = loader.load();
-            PerfilVendedoresViewController perfilVendedoresViewController = loader.getController();
-            perfilVendedoresViewController.setUsuarioActual(usuario2);
+            MiPerfilViewController miPerfilViewController = loader.getController();
+            miPerfilViewController.setUsuarioActual(usuario2);
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) contraseñaTxt.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Market Place "+"-> "+usuario2.getNombre());
+            stage.setTitle(usuario2.getNombre());
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

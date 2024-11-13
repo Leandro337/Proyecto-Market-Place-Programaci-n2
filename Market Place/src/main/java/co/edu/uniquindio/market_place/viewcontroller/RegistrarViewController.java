@@ -1,5 +1,6 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
+import co.edu.uniquindio.market_place.model.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -10,8 +11,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.util.List;
 
-public class RegistrarViewController {
+public class
+RegistrarViewController {
 
     @FXML
     private TextField nombreField;
@@ -63,6 +66,8 @@ public class RegistrarViewController {
         }
     }
 
+    Usuario usuarioRegistrado = new Usuario(nombreField.getText(),apellidoField.getText(), cedulaField.getText(), direccionField.getText(), usuarioField.getText(), contrasenaField.getText());
+
     private boolean camposLlenos(boolean esAdmin) {
         // Validación de campos comunes
         boolean camposComunes = !nombreField.getText().isEmpty() && !apellidoField.getText().isEmpty() &&
@@ -77,20 +82,21 @@ public class RegistrarViewController {
 
     private void abrirVentanaIniciarSesion() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/IniciarSesion.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/Registrar.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Iniciar Sesion");
+            stage.setTitle("Registrar usuario");
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Cerrar la ventana actual después de abrir el iniciar sesion
+            // Cerrar la ventaa actual después de abrir el iniciar sesion
             Stage currentStage = (Stage) registrarVendedorButton.getScene().getWindow();
             currentStage.close();
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error al abrir la ventana de login.");
+            System.out.println("Error al abrir la ventana de registrar usuario.");
         }
     }
+
 }
