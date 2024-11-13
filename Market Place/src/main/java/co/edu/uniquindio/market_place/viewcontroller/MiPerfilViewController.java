@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 
-public class MarketPlaceViewController {
+public class MiPerfilViewController {
 
         @FXML
         private ResourceBundle resources;
