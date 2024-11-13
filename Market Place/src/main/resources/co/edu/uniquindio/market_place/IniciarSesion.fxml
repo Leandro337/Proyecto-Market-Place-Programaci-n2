@@ -8,13 +8,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.IniciarSesionViewController">
    <children>
-      <TextField id="iniciarUsuarioTxt" fx:id="iniciarUsuarioTxt" layoutX="304.0" layoutY="212.0" promptText="Usuario" />
-      <PasswordField id="iniciarContrasenaTxt" fx:id="iniciarContrasenaTxt" layoutX="304.0" layoutY="267.0" promptText="Contraseña" />
-      <Button id="iniciarSesionButton" fx:id="iniciarSesionButton" layoutX="336.0" layoutY="328.0" mnemonicParsing="false" text="Iniciar sesión" />
-      <Button id="registrarButton" fx:id="registrarButton" layoutX="341.0" layoutY="488.0" mnemonicParsing="false" text="Registrarse" />
+      <TextField id="iniciarUsuarioTxt" fx:id="usuarioTxt" layoutX="304.0" layoutY="212.0" promptText="Usuario" />
+      <PasswordField id="iniciarContrasenaTxt" fx:id="contraseñaTxt" layoutX="304.0" layoutY="267.0" promptText="Contraseña" />
+      <Button id="iniciarSesionButton" fx:id="iniciarSesionButton" layoutX="336.0" layoutY="328.0" mnemonicParsing="false" onAction="#onIniciarSesion" text="Iniciar sesión" />
+      <Button id="registrarButton" fx:id="registrarButton" layoutX="341.0" layoutY="488.0" mnemonicParsing="false" onAction="#onRegistrar" text="Registrarse" />
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="264.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@iconos/icons-usuario.png" />

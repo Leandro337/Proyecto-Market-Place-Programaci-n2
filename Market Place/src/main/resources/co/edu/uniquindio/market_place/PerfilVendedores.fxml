@@ -11,7 +11,7 @@
    <children>
       <ImageView fx:id="usuarioImagen1" fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../resources/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
+            <Image url="@iconos/icons-usuario.png" />
          </image>
       </ImageView>
       <Label fx:id="nombreLabel" layoutX="92.0" layoutY="90.0" text="Nombre" />
@@ -20,7 +20,7 @@
       <Button fx:id="miPerfilButton" layoutX="612.0" layoutY="65.0" mnemonicParsing="false" onAction="#onMiPerfil" text="Mi perfil" />
       <ImageView fx:id="usuarioImage1" fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../resources/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
+            <Image url="@iconos/icons-usuario.png" />
          </image>
       </ImageView>
       <Label layoutX="92.0" layoutY="360.0" text="Nombre" />

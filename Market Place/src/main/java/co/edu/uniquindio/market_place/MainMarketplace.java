@@ -12,12 +12,12 @@ public class MainMarketplace extends Application {
     public void start(Stage primaryStage) {
         try {
             // Cargar el archivo FXML de la pantalla de registro
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/Registrar.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/IniciarSesion.fxml"));
             Parent root = loader.load();
 
             // Configurar la escena y el escenario principal
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Registro de Usuario");
+            primaryStage.setTitle("Inicio de sesión");
             primaryStage.setScene(scene);
             primaryStage.show();
 

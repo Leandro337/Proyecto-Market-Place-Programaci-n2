@@ -20,6 +20,10 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
         return claveAdmin;
     }
 
+    public void setListaVendedores(List<Usuario> listaVendedores) {
+        this.listaVendedores = listaVendedores;
+    }
+
 
 
 
@@ -29,9 +33,7 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
         return listaVendedores;
     }
 
-    public void setListaVendedores(List<Usuario> listaVendedores) {
-        this.listaVendedores = listaVendedores;
-    }
+
 
     public boolean crearVendedor(Usuario newUsuario) {
         if (newUsuario != null) {
@@ -156,5 +158,14 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
             return true;
         }
         return false;
+    }
+
+    public Usuario iniciarSesion(String usuario, String contrasenia) {
+        for (Usuario usuarioExistente : getListaVendedores()) {
+            if (usuarioExistente.getUsuario().equals(usuario) && usuarioExistente.getContrasena().equals(contrasenia)) {
+                return usuarioExistente;
+            }
+        }
+        return null;
     }
 }
