@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.IniciarSesionViewController">
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.IniciarSesionViewController">
+   <children>
+      <TextField id="iniciarUsuarioTxt" fx:id="iniciarUsuarioTxt" layoutX="304.0" layoutY="212.0" promptText="Usuario" />
+      <PasswordField id="iniciarContrasenaTxt" fx:id="iniciarContrasenaTxt" layoutX="304.0" layoutY="267.0" promptText="Contraseña" />
+      <Button id="iniciarSesionButton" fx:id="iniciarSesionButton" layoutX="336.0" layoutY="328.0" mnemonicParsing="false" text="Iniciar sesión" />
+      <Button id="registrarButton" fx:id="registrarButton" layoutX="341.0" layoutY="488.0" mnemonicParsing="false" text="Registrarse" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="264.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@iconos/icons-usuario.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="328.0" layoutY="453.0" text="¿No tienes cuenta?" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="264.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@iconos/icons-contraseña.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="343.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@iconos/icons-login.png" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>

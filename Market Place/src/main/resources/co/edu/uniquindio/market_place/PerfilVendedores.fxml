@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.PerfilVendedoresViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.PerfilVendedoresViewController">
    <children>
       <ImageView fx:id="usuarioImagen1" fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -12,15 +15,9 @@
          </image>
       </ImageView>
       <Label fx:id="nombreLabel" layoutX="92.0" layoutY="90.0" text="Nombre" />
-      <Button fx:id="cerrarSesionButton" layoutX="72.0" layoutY="117.0" mnemonicParsing="false" text="Cerrar sesión" onAction="#onCerrarSesion" />
-      <ImageView fx:id="usuarioImagen2" fitHeight="150.0" fitWidth="200.0" layoutX="278.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea fx:id="textArea1" layoutX="278.0" layoutY="234.0" prefHeight="59.0" prefWidth="161.0" />
-      <ListView fx:id="listView" layoutX="542.0" layoutY="153.0" prefHeight="431.0" prefWidth="200.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="278.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea fx:id="textArea2" layoutX="278.0" layoutY="484.0" prefHeight="59.0" prefWidth="161.0" />
+      <Button fx:id="cerrarSesionButton" layoutX="72.0" layoutY="117.0" mnemonicParsing="false" onAction="#onCerrarSesion" text="Cerrar sesión" />
+      <ListView id="productosVendedores" fx:id="productosVendedores" layoutX="278.0" layoutY="119.0" prefHeight="431.0" prefWidth="200.0" />
       <Button fx:id="miPerfilButton" layoutX="612.0" layoutY="65.0" mnemonicParsing="false" onAction="#onMiPerfil" text="Mi perfil" />
-      <Button fx:id="likeButton1" layoutX="441.0" layoutY="251.0" mnemonicParsing="false" onAction="#onLike1" text="Like" />
-      <Button fx:id="likeButton2" layoutX="441.0" layoutY="501.0" mnemonicParsing="false" onAction="#onLike2" text="Like" />
       <ImageView fx:id="usuarioImage1" fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../resources/co/edu/uniquindio/market_place/iconos/icons-usuario.png" />
@@ -29,5 +26,7 @@
       <Label layoutX="92.0" layoutY="360.0" text="Nombre" />
       <Button fx:id="añadirContactoButton" layoutX="64.0" layoutY="391.0" mnemonicParsing="false" onAction="#onAñadirContacto" text="Añadir contacto" />
       <Label layoutX="88.0" layoutY="334.0" text="\@Usuario" />
+      <Label layoutX="351.0" layoutY="82.0" text="Productos" />
+      <Button id="verProductoButton" fx:id="verProductoButton" layoutX="543.0" layoutY="289.0" mnemonicParsing="false" text="Ver producto" />
    </children>
 </AnchorPane>
