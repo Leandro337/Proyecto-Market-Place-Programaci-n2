@@ -48,7 +48,7 @@ public class IniciarSesionViewController {
 
     @FXML
     void onRegistrar(ActionEvent event) {
-
+        registrarse();
     }
 
     @FXML
@@ -108,6 +108,23 @@ public class IniciarSesionViewController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+
+    public void registrarse() {
+        try {
+            // Cargar el archivo FXML de la ventana de registro
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/Registrar.fxml"));
+            Parent root = loader.load();
+
+            // Crear una nueva ventana (Stage) para la ventana de registro
+            Stage stage = new Stage();
+            stage.setTitle("Registrar");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
