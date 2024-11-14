@@ -26,6 +26,10 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
+    public Usuario() {
+
+    }
+
     public static UsuarioBuilder builder() {
         return new UsuarioBuilder();
     }

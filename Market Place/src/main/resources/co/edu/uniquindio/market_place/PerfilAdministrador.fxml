@@ -1,9 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.PerfilAdministradorViewController">
-
-
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.PerfilAdministradorViewController">
+   <children>
+      <TabPane layoutX="2.0" prefHeight="606.0" prefWidth="756.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Estadisitcas">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="578.0" prefWidth="623.0">
+                     <children>
+                        <CheckBox layoutX="108.0" layoutY="151.0" mnemonicParsing="false" prefWidth="420.0" text="Cantidad de mensajes enviados entre dos vendedores">
+                           <font>
+                              <Font size="14.0" />
+                           </font></CheckBox>
+                        <CheckBox layoutX="108.0" layoutY="200.0" mnemonicParsing="false" text="Cantidad de productos publicados entre determinada fecha">
+                           <font>
+                              <Font size="14.0" />
+                           </font></CheckBox>
+                        <CheckBox layoutX="108.0" layoutY="250.0" mnemonicParsing="false" text="Cantidad de productos publicados por X vendedor">
+                           <font>
+                              <Font size="14.0" />
+                           </font></CheckBox>
+                        <CheckBox layoutX="108.0" layoutY="302.0" mnemonicParsing="false" text="Cantidad de contactos por cada vendedor">
+                           <font>
+                              <Font size="14.0" />
+                           </font></CheckBox>
+                        <CheckBox layoutX="108.0" layoutY="354.0" mnemonicParsing="false" text="Top 10 productos con más me gusta">
+                           <font>
+                              <Font size="14.0" />
+                           </font></CheckBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Vendedores">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane layoutY="2.0" prefHeight="654.0" prefWidth="756.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Vendedor 1">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 2">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 3">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 4">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 5">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 6">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 7">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 8">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 9">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Vendedor 10">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="693.0" />
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
 </AnchorPane>

@@ -90,19 +90,6 @@ public class ModelFactory implements IModelFactoryService {
 
         marketPlace.getListaVendedores().add(usuario4);
 
-        Usuario usuario5 = new Usuario();
-        usuario5.setNombre("Juan");
-        usuario5.setApellido("Martínez");
-        usuario5.setCedula("1984563721");
-        usuario5.setContrasena("juanpass");
-        usuario5.setUsuario("jmartinez");
-        usuario5.setDireccion("Cartagena, Bolívar");
-        usuario5.setRol(RollUsuario.VENDEDOR);
-        usuario5.setListaContactos(new ArrayList<>());
-        usuario5.setListaProductos(new ArrayList<>());
-
-        marketPlace.getListaVendedores().add(usuario5);
-
     }
 
     public MarketPlace getMarketPlace (){

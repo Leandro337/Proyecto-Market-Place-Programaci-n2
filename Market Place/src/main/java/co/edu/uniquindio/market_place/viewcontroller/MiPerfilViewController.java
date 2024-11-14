@@ -88,8 +88,27 @@ public class MiPerfilViewController {
 
         @FXML
         void onMostrarMisProductos(ActionEvent event) {
+                try {
+                        // Cargar el archivo FXML de la nueva vista (por ejemplo, MisProductos.fxml)
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MisProductos.fxml"));
+                        Parent root = loader.load();
 
+                        // Crear una nueva escena y mostrarla
+                        Stage stage = (Stage) btnMostrarMisProductos.getScene().getWindow(); // Obtiene el escenario actual
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+
+                } catch (Exception e) {
+                        // En caso de error al cargar la nueva vista
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText("No se pudo cargar la vista");
+                        alert.setContentText("Hubo un error al intentar mostrar los productos.");
+                        alert.showAndWait();
+                }
         }
+
 
         @FXML
         void initialize() {
