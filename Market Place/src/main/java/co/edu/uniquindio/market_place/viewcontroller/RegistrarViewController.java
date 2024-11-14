@@ -1,5 +1,6 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
+import co.edu.uniquindio.market_place.controller.IniciarSesionController;
 import co.edu.uniquindio.market_place.model.Usuario;
 import co.edu.uniquindio.market_place.model.RollUsuario;
 import javafx.fxml.FXML;
@@ -90,6 +91,8 @@ public class RegistrarViewController {
         nuevoUsuario.setUsuario(usuarioField.getText());
         nuevoUsuario.setContrasena(contrasenaField.getText());
         nuevoUsuario.setRol(rol);
+
+        IniciarSesionController.registrarUsuario(nuevoUsuario);
         return nuevoUsuario;
     }
 
