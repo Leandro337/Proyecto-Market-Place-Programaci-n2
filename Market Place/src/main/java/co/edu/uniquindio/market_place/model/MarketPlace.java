@@ -36,11 +36,13 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
 
 
     public boolean crearVendedor(Usuario newUsuario) {
-        if (newUsuario != null) {
-            getListaVendedores().add(newUsuario);
-            return true;
-        }
-        return false;
+      boolean vendedorEncontrado = verificarVendedorExistente(newUsuario.getCedula());
+      if (vendedorEncontrado) {
+          return false;
+      } else {
+          listaVendedores.add(newUsuario);
+          return true;
+      }
     }
 
     public boolean eliminarVendedor(String cedula) {
@@ -72,22 +74,16 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
                 return usuario;
             }
         }
-        System.out.println("No se encontro el vendedor");
+        System.out.println("No se encontro el vendedor con la cedula: " + cedula);
         return null;
     }
 
 
     public boolean verificarVendedorExistente(String cedula){
-        Usuario usuarioExistente = null;
-        for (Usuario usuario : listaVendedores) {
+        for(Usuario usuario : getListaVendedores()) {
             if (usuario.getCedula().equals(cedula)) {
-                usuarioExistente = usuario;
-                break;
+                return true;
             }
-        }
-
-        if (usuarioExistente == null) {
-            return true;
         }
         return false;
     }
@@ -160,6 +156,10 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
         return false;
     }
 
+
+
+
+//------------------------------INICIO DE SESIÓN ---------------------------------------------------------
     public Usuario iniciarSesion(String usuario, String contrasenia) {
         for (Usuario usuarioExistente : getListaVendedores()) {
             if (usuarioExistente.getUsuario().equals(usuario) && usuarioExistente.getContrasena().equals(contrasenia)) {

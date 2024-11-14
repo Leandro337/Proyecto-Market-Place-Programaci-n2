@@ -1,8 +1,6 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
-import co.edu.uniquindio.market_place.controller.IniciarSesionController;
 import co.edu.uniquindio.market_place.model.Usuario;
-import co.edu.uniquindio.market_place.model.RollUsuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -13,8 +11,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.util.List;
 
-public class RegistrarViewController {
+public class
+RegistrarViewController {
 
     @FXML
     private TextField nombreField;
@@ -45,14 +45,12 @@ public class RegistrarViewController {
 
     @FXML
     public void initialize() {
-        // initView();
+       // initView();
     }
 
     @FXML
     private void botonRegistrarVendedor(ActionEvent event) {
         if (camposLlenos(false)) { // Llamada a validar que los campos estén llenos
-            Usuario nuevoVendedor = crearUsuario(RollUsuario.VENDEDOR); // Crea usuario como vendedor
-            System.out.println("Usuario registrado como vendedor: " + nuevoVendedor);
             abrirVentanaIniciarSesion(); // Abre la ventana de login
         } else {
             System.out.println("Por favor, complete todos los campos para registrar el usuario.");
@@ -62,13 +60,13 @@ public class RegistrarViewController {
     @FXML
     private void botonRegistrarAdmin(ActionEvent event) {
         if (camposLlenos(true)) { // Llamada a validar con clave de admin incluida
-            Usuario nuevoAdmin = crearUsuario(RollUsuario.ADMINISTRADOR); // Crea usuario como administrador
-            System.out.println("Usuario registrado como administrador: " + nuevoAdmin);
             abrirVentanaIniciarSesion(); // Abre la ventana de login
         } else {
             System.out.println("Por favor, complete todos los campos para registrar al administrador.");
         }
     }
+
+    Usuario usuarioRegistrado = new Usuario(nombreField.getText(),apellidoField.getText(), cedulaField.getText(), direccionField.getText(), usuarioField.getText(), contrasenaField.getText());
 
     private boolean camposLlenos(boolean esAdmin) {
         // Validación de campos comunes
@@ -82,36 +80,23 @@ public class RegistrarViewController {
         return camposComunes;
     }
 
-    private Usuario crearUsuario(RollUsuario rol) {
-        Usuario nuevoUsuario = new Usuario();
-        nuevoUsuario.setNombre(nombreField.getText());
-        nuevoUsuario.setApellido(apellidoField.getText());
-        nuevoUsuario.setCedula(cedulaField.getText());
-        nuevoUsuario.setDireccion(direccionField.getText());
-        nuevoUsuario.setUsuario(usuarioField.getText());
-        nuevoUsuario.setContrasena(contrasenaField.getText());
-        nuevoUsuario.setRol(rol);
-
-        IniciarSesionController.registrarUsuario(nuevoUsuario);
-        return nuevoUsuario;
-    }
-
     private void abrirVentanaIniciarSesion() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/IniciarSesion.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/Registrar.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Iniciar Sesion");
+            stage.setTitle("Registrar usuario");
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Cerrar la ventana actual después de abrir el iniciar sesion
+            // Cerrar la ventaa actual después de abrir el iniciar sesion
             Stage currentStage = (Stage) registrarVendedorButton.getScene().getWindow();
             currentStage.close();
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error al abrir la ventana de login.");
+            System.out.println("Error al abrir la ventana de registrar usuario.");
         }
     }
+
 }
