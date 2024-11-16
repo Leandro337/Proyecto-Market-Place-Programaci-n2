@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.PerfilVendedoresViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.PerfilVendedoresViewController">
    <children>
       <ImageView fx:id="usuarioImagen1" fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -16,17 +16,17 @@
       </ImageView>
       <Label fx:id="nombreLabel" layoutX="92.0" layoutY="90.0" text="Nombre" />
       <Button fx:id="cerrarSesionButton" layoutX="72.0" layoutY="117.0" mnemonicParsing="false" onAction="#onCerrarSesion" text="Cerrar sesión" />
-      <ListView id="productosVendedores" fx:id="productosVendedores" layoutX="278.0" layoutY="119.0" prefHeight="431.0" prefWidth="200.0" />
+      <ListView fx:id="productosVendedores" layoutX="278.0" layoutY="119.0" prefHeight="431.0" prefWidth="200.0" />
       <Button fx:id="miPerfilButton" layoutX="612.0" layoutY="65.0" mnemonicParsing="false" onAction="#onMiPerfil" text="Mi perfil" />
-      <ImageView fx:id="usuarioImage1" fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="usuarioImagen2" fitHeight="50.0" fitWidth="50.0" layoutX="89.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@iconos/icons-usuario.png" />
          </image>
       </ImageView>
       <Label layoutX="92.0" layoutY="360.0" text="Nombre" />
-      <Button fx:id="añadirContactoButton" layoutX="64.0" layoutY="391.0" mnemonicParsing="false" onAction="#onAñadirContacto" text="Añadir contacto" />
+      <Button fx:id="añadirContactoButton" layoutX="64.0" layoutY="391.0" mnemonicParsing="false" onAction="#onAnadirContacto" text="Añadir contacto" />
       <Label layoutX="88.0" layoutY="334.0" text="\@Usuario" />
       <Label layoutX="351.0" layoutY="82.0" text="Productos" />
-      <Button id="verProductoButton" fx:id="verProductoButton" layoutX="543.0" layoutY="289.0" mnemonicParsing="false" text="Ver producto" />
+      <Button fx:id="verProductoButton" layoutX="543.0" layoutY="289.0" mnemonicParsing="false" onAction="#onVerProducto" text="Ver producto" />
    </children>
 </AnchorPane>

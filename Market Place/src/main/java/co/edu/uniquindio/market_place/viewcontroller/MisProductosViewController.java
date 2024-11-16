@@ -17,9 +17,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MisProductosViewController {
-
     @FXML
     private Button crearPublicacionButton;
+
+    @FXML
+    private Button editarProductoButton;
+
+    @FXML
+    private Button cerrarSesionButton;
+
+    @FXML
+    private Button volverAPerfilButton;
 
     @FXML
     private ResourceBundle resources;
@@ -28,13 +36,7 @@ public class MisProductosViewController {
     private URL location;
 
     @FXML
-    private Button cerrarSesionButton;
-
-    @FXML
     private ImageView iconUsuario;
-
-    @FXML
-    private Button miPerfilButton;
 
     @FXML
     private Label nombreLabel;
@@ -51,36 +53,30 @@ public class MisProductosViewController {
     @FXML
     private TableView<ProductoDto> estadoProducto;
 
-    @FXML
-    private Button editarProductoButton;
 
     @FXML
-    private Button volverAPerfilButton;
-
-
-    @FXML
-    void cerrarSesion(ActionEvent event) {
-
+    void onCerrarSesion(ActionEvent event) {
+        cerrarSesion ();
     }
 
     @FXML
-    void crearPublicacion(ActionEvent event) {
-
+    void onCrearPublicacion(ActionEvent event) {
+        crearPublicacion ();
     }
 
     @FXML
-    void editarProducto(ActionEvent event) {
-
-    }
-
-    @FXML
-    void miPerfil(ActionEvent event) {
-
+    void onEditarProducto(ActionEvent event) {
+        editarProducto();
     }
 
     @FXML
     void onVolver (ActionEvent event) {
         volverAPerfil();
+    }
+
+    @FXML
+    void initialize() {
+
     }
 
     private void volverAPerfil() {
@@ -99,6 +95,18 @@ public class MisProductosViewController {
             e.printStackTrace();
             // Manejo de errores si la carga falla
         }
+    }
+
+    private void editarProducto() {
+
+    }
+
+    private void crearPublicacion() {
+
+    }
+
+    private void cerrarSesion() {
+
     }
 
 }

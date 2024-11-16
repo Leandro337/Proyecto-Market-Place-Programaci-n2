@@ -22,6 +22,12 @@ public class IniciarSesionViewController {
     IniciarSesionController iniciarSesionController;
 
     @FXML
+    private Button iniciarSesionButton;
+
+    @FXML
+    private Button registrarButton;
+
+    @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -29,12 +35,6 @@ public class IniciarSesionViewController {
 
     @FXML
     private PasswordField contraseñaTxt;
-
-    @FXML
-    private Button iniciarSesionButton;
-
-    @FXML
-    private Button registrarButton;
 
     @FXML
     private TextField usuarioTxt;
@@ -45,7 +45,6 @@ public class IniciarSesionViewController {
 
     }
 
-
     @FXML
     void onRegistrar(ActionEvent event) {
         registrarse();
@@ -54,7 +53,6 @@ public class IniciarSesionViewController {
     @FXML
     void initialize() {
         iniciarSesionController = new IniciarSesionController();
-
 
     }
 

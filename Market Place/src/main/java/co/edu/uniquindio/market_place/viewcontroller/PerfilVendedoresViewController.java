@@ -1,6 +1,7 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
 import co.edu.uniquindio.market_place.model.Usuario;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,19 +21,58 @@ public class PerfilVendedoresViewController {
     Usuario usuarioActual;
 
     @FXML
+    private Button cerrarSesionButton;
+
+    @FXML
+    private Button miPerfilButton;
+
+    @FXML
+    private Button anadirContactButton;
+
+    @FXML
+    private Button verProductoButton;
+
+    @FXML
     private Label nombreLabel;
 
     @FXML
-    private Button cerrarSesionButton, miPerfilButton, añadirContactoButton, likeButton1, likeButton2;
+    private ImageView usuarioImagen1;
 
     @FXML
-    private ImageView usuarioImagen1, usuarioImagen2;
+    private ImageView usuarioImagen2;
 
     @FXML
-    private TextArea textArea1, textArea2;
+    private TextArea textArea1;
+
+    @FXML
+    private TextArea textArea2;
 
     @FXML
     private ListView<?> listView;
+
+    @FXML
+    void onCerrarSesion (ActionEvent event) {
+        System.out.println("Cerrar Sesion");
+        cerrarSesion ();
+    }
+
+    @FXML
+    void onMiPerfil (ActionEvent event) {
+        System.out.println("Abrir perfil");
+        abrirMiPerfil ();
+    }
+
+    @FXML
+    void onAnadirContacto (ActionEvent event) {
+        System.out.println("Añadir contacto");
+        anadirContacto ();
+    }
+
+    @FXML
+    void onVerProducto (ActionEvent event) {
+        System.out.println("Ver producto");
+        verProducto ();
+    }
 
     @FXML
     private void initialize() {
@@ -40,8 +80,7 @@ public class PerfilVendedoresViewController {
         nombreLabel.setText("Bienvenido, Usuario");
     }
 
-    @FXML
-    private void onCerrarSesion() {
+    private void cerrarSesion() {
         Stage currentStage = (Stage) cerrarSesionButton.getScene().getWindow();
         if (currentStage != null) {
             currentStage.close();
@@ -70,25 +109,16 @@ public class PerfilVendedoresViewController {
         }
     }
 
+    private void abrirMiPerfil() {
 
-    @FXML
-    private void onMiPerfil() {
-        System.out.println("Abrir perfil");
     }
 
-    @FXML
-    private void onAñadirContacto() {
-        System.out.println("Añadir contacto");
+    private void verProducto() {
+
     }
 
-    @FXML
-    private void onLike1() {
-        System.out.println("Primer Like");
-    }
+    private void anadirContacto() {
 
-    @FXML
-    private void onLike2() {
-        System.out.println("Segundo Like");
     }
 
     public void setUsuarioActual(Usuario usuario2) {

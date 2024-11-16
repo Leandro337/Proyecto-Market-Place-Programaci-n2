@@ -16,19 +16,11 @@
                            <font>
                               <Font size="14.0" />
                            </font></CheckBox>
-                        <CheckBox layoutX="108.0" layoutY="200.0" mnemonicParsing="false" text="Cantidad de productos publicados entre determinada fecha">
+                        <CheckBox layoutX="108.0" layoutY="269.0" mnemonicParsing="false" text="Cantidad de productos publicados entre determinada fecha">
                            <font>
                               <Font size="14.0" />
                            </font></CheckBox>
-                        <CheckBox layoutX="108.0" layoutY="250.0" mnemonicParsing="false" text="Cantidad de productos publicados por X vendedor">
-                           <font>
-                              <Font size="14.0" />
-                           </font></CheckBox>
-                        <CheckBox layoutX="108.0" layoutY="302.0" mnemonicParsing="false" text="Cantidad de contactos por cada vendedor">
-                           <font>
-                              <Font size="14.0" />
-                           </font></CheckBox>
-                        <CheckBox layoutX="108.0" layoutY="354.0" mnemonicParsing="false" text="Top 10 productos con más me gusta">
+                        <CheckBox layoutX="108.0" layoutY="374.0" mnemonicParsing="false" text="Cantidad de productos publicados por X vendedor">
                            <font>
                               <Font size="14.0" />
                            </font></CheckBox>

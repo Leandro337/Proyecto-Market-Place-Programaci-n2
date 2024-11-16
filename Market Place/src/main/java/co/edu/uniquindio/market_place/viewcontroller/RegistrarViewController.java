@@ -17,6 +17,12 @@ import java.io.IOException;
 public class RegistrarViewController {
 
     @FXML
+    private Button registrarVendedorButton;
+
+    @FXML
+    private Button registrarAdminButton;
+
+    @FXML
     private TextField nombreField;
 
     @FXML
@@ -38,18 +44,21 @@ public class RegistrarViewController {
     private PasswordField claveAdminField;
 
     @FXML
-    private Button registrarVendedorButton;
+    void onRegistrarVendedor(ActionEvent event) {
+        registrarVendedor ();
+    }
 
     @FXML
-    private Button registrarAdminButton;
+    void onRegistrarAdmin(ActionEvent event) {
+        registrarAdmin ();
+    }
 
     @FXML
     public void initialize() {
         // initView();
     }
 
-    @FXML
-    private void botonRegistrarVendedor(ActionEvent event) {
+    private void registrarVendedor() {
         if (camposLlenos(false)) { // Llamada a validar que los campos estén llenos
             Usuario nuevoVendedor = crearUsuario(RollUsuario.VENDEDOR); // Crea usuario como vendedor
             System.out.println("Usuario registrado como vendedor: " + nuevoVendedor);
@@ -59,8 +68,7 @@ public class RegistrarViewController {
         }
     }
 
-    @FXML
-    private void botonRegistrarAdmin(ActionEvent event) {
+    private void registrarAdmin() {
         if (camposLlenos(true)) { // Llamada a validar con clave de admin incluida
             Usuario nuevoAdmin = crearUsuario(RollUsuario.ADMINISTRADOR); // Crea usuario como administrador
             System.out.println("Usuario registrado como administrador: " + nuevoAdmin);
@@ -107,9 +115,6 @@ public class RegistrarViewController {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Cerrar la ventana actual después de abrir el iniciar sesion
-            Stage currentStage = (Stage) registrarVendedorButton.getScene().getWindow();
-            currentStage.close();
 
         } catch (IOException e) {
             e.printStackTrace();

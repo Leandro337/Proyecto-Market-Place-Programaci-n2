@@ -9,16 +9,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.MiPerfilViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.MiPerfilViewController">
    <children>
-      <Button fx:id="btnMostrarMisProductos" layoutX="72.0" layoutY="329.0" mnemonicParsing="false" onAction="#onMostrarMisProductos" text="Mis productos" />
+      <Button fx:id="mostrarMisProductosButton" layoutX="72.0" layoutY="329.0" mnemonicParsing="false" onAction="#onMostrarMisProductos" text="Mis productos" />
       <Label fx:id="nombreLabel" layoutX="95.0" layoutY="254.0" text="Nombre" />
       <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="92.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@iconos/icons-usuario.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnCerrarSeion" layoutX="75.0" layoutY="282.0" mnemonicParsing="false" onAction="#onCerrarSesion" text="Cerrar sesión" />
+      <Button fx:id="cerrarSeionButton" layoutX="75.0" layoutY="282.0" mnemonicParsing="false" onAction="#onCerrarSesion" text="Cerrar sesión" />
       <Label layoutX="316.0" layoutY="58.0" text="Contactos" />
       <ListView fx:id="listViewContactos" layoutX="243.0" layoutY="95.0" prefHeight="177.0" prefWidth="200.0" />
       <Label layoutX="526.0" layoutY="58.0" text="Contactos sugeridos" />
@@ -28,6 +28,6 @@
       <Label layoutX="547.0" layoutY="295.0" text="Chat abierto" />
       <TextArea fx:id="TextAreaChatsAbiertos" layoutX="480.0" layoutY="316.0" prefHeight="200.0" prefWidth="200.0" />
       <TextField fx:id="txtCampoTexto" layoutX="480.0" layoutY="516.0" prefHeight="25.0" prefWidth="200.0" />
-      <Button fx:id="btnEnviarMensaje" layoutX="533.0" layoutY="541.0" mnemonicParsing="false" onAction="#onEnviarMensaje" text="Enviar mensaje" />
+      <Button fx:id="enviarMensajeButton" layoutX="533.0" layoutY="541.0" mnemonicParsing="false" onAction="#onEnviarMensaje" text="Enviar mensaje" />
    </children>
 </AnchorPane>
