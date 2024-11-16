@@ -2,6 +2,7 @@ package co.edu.uniquindio.market_place.viewcontroller;
 
 import co.edu.uniquindio.market_place.controller.IniciarSesionController;
 import co.edu.uniquindio.market_place.model.Usuario;
+import co.edu.uniquindio.market_place.model.RollUsuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class IniciarSesionViewController {
 
-    IniciarSesionController iniciarSesionController;
+    private IniciarSesionController iniciarSesionController;
 
     @FXML
     private Button iniciarSesionButton;
@@ -42,7 +43,6 @@ public class IniciarSesionViewController {
     @FXML
     void onIniciarSesion(ActionEvent event) {
         iniciarSesion();
-
     }
 
     @FXML
@@ -53,7 +53,6 @@ public class IniciarSesionViewController {
     @FXML
     void initialize() {
         iniciarSesionController = new IniciarSesionController();
-
     }
 
     private void iniciarSesion() {
@@ -63,23 +62,38 @@ public class IniciarSesionViewController {
             Usuario usuario2 = iniciarSesionController.iniciarSesion(usuario, contrasenia);
             if (usuario2 != null) {
                 showMessage("Inicio de sesión", "Inicio de sesión exitoso", Alert.AlertType.INFORMATION);
-                cargarMarketPlace(usuario2);
+                cargarMarketPlace(usuario2); // Llamamos al método para cargar la ventana correspondiente
             } else {
                 showMessage("Error", "Error, el usuario no existe", Alert.AlertType.ERROR);
             }
         } else {
             showMessage("Error", "Ingrese todos los datos", Alert.AlertType.ERROR);
         }
-
     }
 
+    // Método para redirigir según el rol del usuario
     private void cargarMarketPlace(Usuario usuario2) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MiPerfil.fxml"));
-            Parent root = loader.load();
-            MiPerfilViewController miPerfilViewController = loader.getController();
-            miPerfilViewController.setUsuarioActual(usuario2);
+            FXMLLoader loader;
+            Parent root;
 
+            // Verificamos el rol del usuario
+            if (usuario2.getRol() == RollUsuario.VENDEDOR) {
+                loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MiPerfil.fxml"));
+                root = loader.load();
+                MiPerfilViewController miPerfilViewController = loader.getController();
+                miPerfilViewController.setUsuarioActual(usuario2);
+            } else if (usuario2.getRol() == RollUsuario.ADMINISTRADOR) {
+                loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/PerfilAdministrador.fxml"));
+                root = loader.load();
+                PerfilAdministradorViewController perfilAdministradorViewController = loader.getController();
+                perfilAdministradorViewController.setUsuarioActual(usuario2);
+            } else {
+                showMessage("Error", "Rol no reconocido", Alert.AlertType.ERROR);
+                return;
+            }
+
+            // Cambiar la escena actual
             Scene scene = new Scene(root);
             Stage stage = (Stage) contraseñaTxt.getScene().getWindow();
             stage.setScene(scene);
@@ -108,7 +122,6 @@ public class IniciarSesionViewController {
         alert.showAndWait();
     }
 
-
     public void registrarse() {
         try {
             // Cargar el archivo FXML de la ventana de registro
@@ -124,5 +137,4 @@ public class IniciarSesionViewController {
             e.printStackTrace();
         }
     }
-
 }

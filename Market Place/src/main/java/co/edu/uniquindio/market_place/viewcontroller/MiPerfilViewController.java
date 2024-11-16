@@ -126,8 +126,6 @@ public class MiPerfilViewController {
 
     }
 
-
-
     public void setUsuarioActual(Usuario usuario2) {
             this.usuarioActual = usuario2;
             nombreLabel.setText(usuarioActual.getNombre());

@@ -5,6 +5,7 @@ import co.edu.uniquindio.market_place.model.Usuario;
 import co.edu.uniquindio.market_place.model.RollUsuario;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -13,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+
+import static com.almasb.fxgl.dsl.FXGLForKtKt.showMessage;
 
 public class RegistrarViewController {
 
@@ -45,24 +48,20 @@ public class RegistrarViewController {
 
     @FXML
     void onRegistrarVendedor(ActionEvent event) {
-        registrarVendedor ();
+        registrarVendedor();
     }
 
     @FXML
     void onRegistrarAdmin(ActionEvent event) {
-        registrarAdmin ();
-    }
-
-    @FXML
-    public void initialize() {
-        // initView();
+        registrarAdmin();
     }
 
     private void registrarVendedor() {
-        if (camposLlenos(false)) { // Llamada a validar que los campos estén llenos
+        if (camposLlenos(false)) {
             Usuario nuevoVendedor = crearUsuario(RollUsuario.VENDEDOR); // Crea usuario como vendedor
             System.out.println("Usuario registrado como vendedor: " + nuevoVendedor);
-            abrirVentanaIniciarSesion(); // Abre la ventana de login
+            IniciarSesionController.registrarVendedor(nuevoVendedor); // Registra en la lista de vendedores
+            abrirVentanaIniciarSesion();
         } else {
             System.out.println("Por favor, complete todos los campos para registrar el usuario.");
         }
@@ -70,22 +69,34 @@ public class RegistrarViewController {
 
     private void registrarAdmin() {
         if (camposLlenos(true)) { // Llamada a validar con clave de admin incluida
-            Usuario nuevoAdmin = crearUsuario(RollUsuario.ADMINISTRADOR); // Crea usuario como administrador
-            System.out.println("Usuario registrado como administrador: " + nuevoAdmin);
-            abrirVentanaIniciarSesion(); // Abre la ventana de login
+            String claveAdmin = claveAdminField.getText();
+            if (IniciarSesionController.verificarClaveAdmin(claveAdmin)) {
+                Usuario nuevoAdmin = crearUsuario(RollUsuario.ADMINISTRADOR); // Crea usuario como administrador
+                System.out.println("Usuario registrado como administrador: " + nuevoAdmin);
+                abrirVentanaIniciarSesion(); // Abre la ventana de login
+            } else {
+                showMessage("Error", "La clave de administrador es incorrecta", Alert.AlertType.ERROR);
+            }
         } else {
             System.out.println("Por favor, complete todos los campos para registrar al administrador.");
         }
     }
 
+    private void showMessage(String title, String message, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     private boolean camposLlenos(boolean esAdmin) {
-        // Validación de campos comunes
         boolean camposComunes = !nombreField.getText().isEmpty() && !apellidoField.getText().isEmpty() &&
                 !cedulaField.getText().isEmpty() && !direccionField.getText().isEmpty() &&
                 !usuarioField.getText().isEmpty() && !contrasenaField.getText().isEmpty();
 
         if (esAdmin) {
-            return camposComunes && !claveAdminField.getText().isEmpty(); // Incluye la clave de admin en la validación
+            return camposComunes && !claveAdminField.getText().isEmpty();
         }
         return camposComunes;
     }
@@ -100,8 +111,12 @@ public class RegistrarViewController {
         nuevoUsuario.setContrasena(contrasenaField.getText());
         nuevoUsuario.setRol(rol);
 
-        // Registrar el usuario en la lista global
-        IniciarSesionController.registrarUsuario(nuevoUsuario);
+        // Registrar el usuario en la lista correspondiente según el rol
+        if (rol == RollUsuario.ADMINISTRADOR) {
+            IniciarSesionController.registrarAdministrador(nuevoUsuario);
+        } else if (rol == RollUsuario.VENDEDOR) {
+            IniciarSesionController.registrarVendedor(nuevoUsuario);
+        }
 
         return nuevoUsuario;
     }
@@ -114,11 +129,8 @@ public class RegistrarViewController {
             stage.setTitle("Iniciar Sesion");
             stage.setScene(new Scene(root));
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Error al abrir la ventana de login.");
         }
     }
 }
