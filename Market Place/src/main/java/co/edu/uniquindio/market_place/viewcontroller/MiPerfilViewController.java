@@ -65,10 +65,6 @@ public class MiPerfilViewController {
         mostrarMisProductos ();
     }
 
-    @FXML
-    void initialize() {
-
-    }
 
     private void cerrarSesion() {
         Stage currentStage = (Stage) cerrarSeionButton.getScene().getWindow();
@@ -125,6 +121,7 @@ public class MiPerfilViewController {
     private void enviarMensaje() {
 
     }
+
 
     public void setUsuarioActual(Usuario usuario2) {
             this.usuarioActual = usuario2;

@@ -1,8 +1,9 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
 import co.edu.uniquindio.market_place.controller.IniciarSesionController;
+import co.edu.uniquindio.market_place.model.Administrador;
 import co.edu.uniquindio.market_place.model.Usuario;
-import co.edu.uniquindio.market_place.model.RollUsuario;
+import co.edu.uniquindio.market_place.model.Vendedor;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -58,27 +59,28 @@ public class RegistrarViewController {
 
     private void registrarVendedor() {
         if (camposLlenos(false)) {
-            Usuario nuevoVendedor = crearUsuario(RollUsuario.VENDEDOR); // Crea usuario como vendedor
-            System.out.println("Usuario registrado como vendedor: " + nuevoVendedor);
-            IniciarSesionController.registrarVendedor(nuevoVendedor); // Registra en la lista de vendedores
+            Vendedor nuevoVendedor = (Vendedor) crearUsuario(false);
+            showMessage("Registro exitoso", "Nuevo vendedor registrado", Alert.AlertType.INFORMATION);
+            IniciarSesionController.registrarVendedor(nuevoVendedor); // Cambia el controlador si es necesario
             abrirVentanaIniciarSesion();
         } else {
-            System.out.println("Por favor, complete todos los campos para registrar el usuario.");
+            showMessage("Campos incompletos", "Complete todos los campos para registrar al vendedor", Alert.AlertType.ERROR);
         }
     }
 
     private void registrarAdmin() {
-        if (camposLlenos(true)) { // Llamada a validar con clave de admin incluida
+        if (camposLlenos(true)) {
             String claveAdmin = claveAdminField.getText();
             if (IniciarSesionController.verificarClaveAdmin(claveAdmin)) {
-                Usuario nuevoAdmin = crearUsuario(RollUsuario.ADMINISTRADOR); // Crea usuario como administrador
-                System.out.println("Usuario registrado como administrador: " + nuevoAdmin);
-                abrirVentanaIniciarSesion(); // Abre la ventana de login
+                Administrador nuevoAdmin = (Administrador) crearUsuario(true);
+                showMessage("Registro exitoso", "Nuevo administrador registrado", Alert.AlertType.INFORMATION);
+                IniciarSesionController.registrarAdministrador(nuevoAdmin); // Cambia el controlador si es necesario
+                abrirVentanaIniciarSesion();
             } else {
                 showMessage("Error", "La clave de administrador es incorrecta", Alert.AlertType.ERROR);
             }
         } else {
-            System.out.println("Por favor, complete todos los campos para registrar al administrador.");
+            showMessage("Campos incompletos", "Complete todos los campos para registrar al administrador", Alert.AlertType.ERROR);
         }
     }
 
@@ -101,36 +103,46 @@ public class RegistrarViewController {
         return camposComunes;
     }
 
-    private Usuario crearUsuario(RollUsuario rol) {
-        Usuario nuevoUsuario = new Usuario();
-        nuevoUsuario.setNombre(nombreField.getText());
-        nuevoUsuario.setApellido(apellidoField.getText());
-        nuevoUsuario.setCedula(cedulaField.getText());
-        nuevoUsuario.setDireccion(direccionField.getText());
-        nuevoUsuario.setUsuario(usuarioField.getText());
-        nuevoUsuario.setContrasena(contrasenaField.getText());
-        nuevoUsuario.setRol(rol);
-
-        // Registrar el usuario en la lista correspondiente según el rol
-        if (rol == RollUsuario.ADMINISTRADOR) {
-            IniciarSesionController.registrarAdministrador(nuevoUsuario);
-        } else if (rol == RollUsuario.VENDEDOR) {
-            IniciarSesionController.registrarVendedor(nuevoUsuario);
+    private Usuario crearUsuario(boolean esAdmin) {
+        if (esAdmin) {
+            return new Administrador(
+                    nombreField.getText(),
+                    apellidoField.getText(),
+                    cedulaField.getText(),
+                    direccionField.getText(),
+                    usuarioField.getText(),
+                    contrasenaField.getText(),
+                    claveAdminField.getText()
+            );
+        } else {
+            return new Vendedor(
+                    nombreField.getText(),
+                    apellidoField.getText(),
+                    cedulaField.getText(),
+                    direccionField.getText(),
+                    usuarioField.getText(),
+                    contrasenaField.getText()
+            );
         }
-
-        return nuevoUsuario;
     }
+
 
     private void abrirVentanaIniciarSesion() {
         try {
+            // Obtener el Stage de la ventana actual
+            Stage stage = (Stage) registrarVendedorButton.getScene().getWindow();
+            stage.close(); // Cerrar la ventana de registro
+
+            // Cargar la nueva ventana de inicio de sesión
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/IniciarSesion.fxml"));
             Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Iniciar Sesion");
-            stage.setScene(new Scene(root));
-            stage.show();
+            Stage newStage = new Stage();
+            newStage.setTitle("Iniciar Sesion");
+            newStage.setScene(new Scene(root));
+            newStage.show(); // Mostrar la ventana de inicio de sesión
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

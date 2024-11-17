@@ -11,6 +11,10 @@ public class IniciarSesionController implements IIniciarSesionController {
     private static List<Usuario> usuariosAdministradores = new ArrayList<>();
     private static final String CLAVE_ADMIN = "123";
 
+    public static List<Usuario> getUsuariosVendedores() {
+        return usuariosAdministradores;
+    }
+
     // Método para registrar un vendedor
     public static void registrarVendedor(Usuario vendedor) {
         usuariosVendedores.add(vendedor);

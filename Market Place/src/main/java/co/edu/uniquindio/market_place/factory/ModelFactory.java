@@ -5,7 +5,6 @@ import co.edu.uniquindio.market_place.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.market_place.mapping.mapper.MarketplaceMapping;
 import co.edu.uniquindio.market_place.model.MarketPlace;
 import co.edu.uniquindio.market_place.model.Producto;
-import co.edu.uniquindio.market_place.model.RollUsuario;
 import co.edu.uniquindio.market_place.model.Usuario;
 import co.edu.uniquindio.market_place.service.IModelFactoryService;
 
@@ -33,10 +32,10 @@ public class ModelFactory implements IModelFactoryService {
     }
 
     private void inicializarDatos() {
-        initUsuarios();
+        initVendedores();
     }
 
-    private void initUsuarios() {
+    private void initVendedores() {
         Usuario usuario1 = new Usuario();
         usuario1.setNombre("Jhan Carlos");
         usuario1.setApellido("Ocoró");
@@ -44,7 +43,6 @@ public class ModelFactory implements IModelFactoryService {
         usuario1.setContrasena("5465546456");
         usuario1.setUsuario("maloh");
         usuario1.setDireccion("Armenia, Quindío");
-        usuario1.setRol(RollUsuario.VENDEDOR);
         usuario1.setListaContactos(new ArrayList<>());
         usuario1.setListaProductos(new ArrayList<>());
 
@@ -58,7 +56,6 @@ public class ModelFactory implements IModelFactoryService {
         usuario2.setContrasena("mariana2023");
         usuario2.setUsuario("mramirez");
         usuario2.setDireccion("Bogotá, Cundinamarca");
-        usuario2.setRol(RollUsuario.VENDEDOR);
         usuario2.setListaContactos(new ArrayList<>());
         usuario2.setListaProductos(new ArrayList<>());
 
@@ -71,7 +68,6 @@ public class ModelFactory implements IModelFactoryService {
         usuario3.setContrasena("andres123");
         usuario3.setUsuario("alopez");
         usuario3.setDireccion("Medellín, Antioquia");
-        usuario3.setRol(RollUsuario.VENDEDOR);
         usuario3.setListaContactos(new ArrayList<>());
         usuario3.setListaProductos(new ArrayList<>());
 
@@ -84,7 +80,6 @@ public class ModelFactory implements IModelFactoryService {
         usuario4.setContrasena("camila456");
         usuario4.setUsuario("csanchez");
         usuario4.setDireccion("Cali, Valle del Cauca");
-        usuario4.setRol(RollUsuario.VENDEDOR);
         usuario4.setListaContactos(new ArrayList<>());
         usuario4.setListaProductos(new ArrayList<>());
 

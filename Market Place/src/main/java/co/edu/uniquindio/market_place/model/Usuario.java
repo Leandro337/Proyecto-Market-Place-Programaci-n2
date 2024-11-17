@@ -12,7 +12,6 @@ public class Usuario {
     private String direccion;
     private String usuario;
     private String contrasena;
-    private RollUsuario rol;
     private List<Producto> listaProductos;
     private List<Usuario> listaContactos;
 
@@ -82,14 +81,6 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public RollUsuario getRol() {
-        return rol;
-    }
-
-    public void setRol(RollUsuario rol) {
-        this.rol = rol;
-    }
-
     public List<Producto> getListaProductos() {
         return listaProductos;
     }
@@ -114,9 +105,7 @@ public class Usuario {
                 ", cedula='" + cedula + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", usuario='" + usuario + '\'' +
-                ", contraseña='" + contrasena + '\'' +
-                ", rol= '" + rol + '\'' +
-                ", productos=" + listaProductos +
+                ", contraseña='" + contrasena +
                 '}';
     }
 }
