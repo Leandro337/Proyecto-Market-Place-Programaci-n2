@@ -15,7 +15,6 @@ public class UsuarioBuilder {
     protected String usuario;
     protected String contrasena;
     protected List<Producto> listaProductos;
-    protected List<Usuario> listaContactos;
 
     public UsuarioBuilder nombre (String nombre) {
         this.nombre = nombre;
@@ -50,11 +49,6 @@ public class UsuarioBuilder {
 
     public UsuarioBuilder listaProductos (Producto listaProductos) {
         this.listaProductos = new ArrayList<Producto>();
-        return this;
-    }
-
-    public UsuarioBuilder listaContactos (Usuario listaContactos) {
-        this.listaContactos = new ArrayList<Usuario>();
         return this;
     }
 

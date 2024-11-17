@@ -2,9 +2,13 @@ package co.edu.uniquindio.market_place.viewcontroller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.market_place.model.Usuario;
+import co.edu.uniquindio.market_place.model.Vendedor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +20,8 @@ import javafx.stage.Stage;
 public class MiPerfilViewController {
 
     Usuario usuarioActual;
+
+    private ObservableList<String> listaContactosSugeridos = FXCollections.observableArrayList();
 
     @FXML
     private Button cerrarSeionButton;
@@ -39,13 +45,13 @@ public class MiPerfilViewController {
     private TextArea TextAreaChatsAbiertos;
 
     @FXML
-    private ListView<?> listViewChats;
+    private ListView<String> listViewChats;
 
     @FXML
-    private ListView<?> listViewContactos;
+    private ListView<String> listViewContactos;
 
     @FXML
-    private ListView<?> listViewContactosSugeridos;
+    private ListView<String> listViewContactosSugeridos;
 
     @FXML
     private TextField txtCampoTexto;
@@ -63,6 +69,39 @@ public class MiPerfilViewController {
     @FXML
     void onMostrarMisProductos(ActionEvent event) {
         mostrarMisProductos ();
+    }
+
+    @FXML
+    private void initialize() {
+        listViewContactosSugeridos.setOnMouseClicked(event -> {
+            String contactoSeleccionado = listViewContactosSugeridos.getSelectionModel().getSelectedItem();
+            if (contactoSeleccionado != null) {
+                // Abrir nueva ventana con la información del contacto seleccionado
+                abrirVentanaContacto(contactoSeleccionado);
+            }
+        });
+    }
+
+    private void abrirVentanaContacto(String contacto) {
+        try {
+            // Cargar la vista del contacto seleccionado (por ejemplo, "VistaContacto.fxml")
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/PerfilVendedores.fxml"));
+            Parent root = loader.load();
+
+            // Asumiendo que la nueva ventana tiene un controlador que recibe el contacto seleccionado
+            PerfilVendedoresViewController controlador = loader.getController();
+            controlador.setContacto(contacto);
+
+            // Crear una nueva escena y mostrarla
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.setTitle("Información del Contacto");
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -124,7 +163,32 @@ public class MiPerfilViewController {
 
 
     public void setUsuarioActual(Usuario usuario2) {
-            this.usuarioActual = usuario2;
-            nombreLabel.setText(usuarioActual.getNombre());
+        this.usuarioActual = usuario2;
+        nombreLabel.setText(usuarioActual.getNombre());
+
+        // Actualizar la lista de contactos sugeridos al cargar el perfil
+        actualizarContactosSugeridos();
+    }
+
+    // Método para actualizar la lista de contactos sugeridos con los vendedores registrados
+    private void actualizarContactosSugeridos() {
+        List<Vendedor> vendedores = Vendedor.getListaVendedores();
+        listViewContactosSugeridos.getItems().clear();  // Limpiar la lista actual
+
+        // Agregar los nombres de los vendedores a la lista, excepto el usuario actual
+        for (Vendedor vendedor : vendedores) {
+            // No añadir al usuario actual a la lista de contactos sugeridos
+            if (!vendedor.getNombre().equals(usuarioActual.getNombre())) {
+                listViewContactosSugeridos.getItems().add(vendedor.getNombre());
+            }
+        }
+    }
+
+    public ObservableList<String> getListaContactosSugeridos() {
+        return listaContactosSugeridos;
+    }
+
+    public void setListaContactosSugeridos(ObservableList<String> listaContactosSugeridos) {
+        this.listaContactosSugeridos = listaContactosSugeridos;
     }
 }

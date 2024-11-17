@@ -32,60 +32,10 @@ public class ModelFactory implements IModelFactoryService {
     }
 
     private void inicializarDatos() {
-        initVendedores();
+        //initVendedores();
     }
 
-    private void initVendedores() {
-        Usuario usuario1 = new Usuario();
-        usuario1.setNombre("Jhan Carlos");
-        usuario1.setApellido("Ocoró");
-        usuario1.setCedula("2143532324");
-        usuario1.setContrasena("5465546456");
-        usuario1.setUsuario("maloh");
-        usuario1.setDireccion("Armenia, Quindío");
-        usuario1.setListaContactos(new ArrayList<>());
-        usuario1.setListaProductos(new ArrayList<>());
 
-        marketPlace.getListaVendedores().add(usuario1);
-
-
-        Usuario usuario2 = new Usuario();
-        usuario2.setNombre("Mariana");
-        usuario2.setApellido("Ramírez");
-        usuario2.setCedula("3158745231");
-        usuario2.setContrasena("mariana2023");
-        usuario2.setUsuario("mramirez");
-        usuario2.setDireccion("Bogotá, Cundinamarca");
-        usuario2.setListaContactos(new ArrayList<>());
-        usuario2.setListaProductos(new ArrayList<>());
-
-        marketPlace.getListaVendedores().add(usuario2);
-
-        Usuario usuario3 = new Usuario();
-        usuario3.setNombre("Andrés");
-        usuario3.setApellido("López");
-        usuario3.setCedula("2254789632");
-        usuario3.setContrasena("andres123");
-        usuario3.setUsuario("alopez");
-        usuario3.setDireccion("Medellín, Antioquia");
-        usuario3.setListaContactos(new ArrayList<>());
-        usuario3.setListaProductos(new ArrayList<>());
-
-        marketPlace.getListaVendedores().add(usuario3);
-
-        Usuario usuario4 = new Usuario();
-        usuario4.setNombre("Camila");
-        usuario4.setApellido("Sánchez");
-        usuario4.setCedula("3248596174");
-        usuario4.setContrasena("camila456");
-        usuario4.setUsuario("csanchez");
-        usuario4.setDireccion("Cali, Valle del Cauca");
-        usuario4.setListaContactos(new ArrayList<>());
-        usuario4.setListaProductos(new ArrayList<>());
-
-        marketPlace.getListaVendedores().add(usuario4);
-
-    }
 
     public MarketPlace getMarketPlace (){
         return marketPlace;

@@ -21,13 +21,10 @@ public class PerfilVendedoresViewController {
     Usuario usuarioActual;
 
     @FXML
-    private Button cerrarSesionButton;
+    private Button volverAPerfilButton;
 
     @FXML
-    private Button miPerfilButton;
-
-    @FXML
-    private Button anadirContactButton;
+    private Button anadirContactoButton;
 
     @FXML
     private Button verProductoButton;
@@ -36,30 +33,22 @@ public class PerfilVendedoresViewController {
     private Label nombreLabel;
 
     @FXML
-    private ImageView usuarioImagen1;
+    private Label productoLabel;
 
     @FXML
     private ImageView usuarioImagen2;
 
     @FXML
-    private TextArea textArea1;
+    private Label usuarioLabel;
 
     @FXML
-    private TextArea textArea2;
+    private ListView<String> productosVendedorButton;
+
 
     @FXML
-    private ListView<?> listView;
-
-    @FXML
-    void onCerrarSesion (ActionEvent event) {
-        System.out.println("Cerrar Sesion");
-        cerrarSesion ();
-    }
-
-    @FXML
-    void onMiPerfil (ActionEvent event) {
+    void onVolver (ActionEvent event) {
         System.out.println("Abrir perfil");
-        abrirMiPerfil ();
+        volverAMiPerfil ();
     }
 
     @FXML
@@ -80,36 +69,13 @@ public class PerfilVendedoresViewController {
         nombreLabel.setText("Bienvenido, Usuario");
     }
 
-    private void cerrarSesion() {
-        Stage currentStage = (Stage) cerrarSesionButton.getScene().getWindow();
-        if (currentStage != null) {
-            currentStage.close();
-        }
-
-        openWindow("/co/edu/uniquindio/market_place/IniciarSesion.fxml", "Inicio de sesión", null);
-
+    public void setContacto(String contacto) {
+        // Mostrar el nombre del contacto en la etiqueta
+        nombreLabel.setText(contacto);
     }
 
-    private void openWindow(String s, String inicioDeSesión, Stage ownerStage) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(s));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setTitle(inicioDeSesión);
 
-            if (ownerStage != null) {
-                stage.initOwner(ownerStage);
-            }
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void abrirMiPerfil() {
+    private void volverAMiPerfil() {
 
     }
 

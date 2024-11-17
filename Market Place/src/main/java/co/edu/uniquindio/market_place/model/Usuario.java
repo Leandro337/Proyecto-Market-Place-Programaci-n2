@@ -13,7 +13,6 @@ public class Usuario {
     private String usuario;
     private String contrasena;
     private List<Producto> listaProductos;
-    private List<Usuario> listaContactos;
 
 
     public Usuario(String nombre, String apellido, String cedula, String direccion, String usuario, String contrasena) {
@@ -87,14 +86,6 @@ public class Usuario {
 
     public void setListaProductos(List<Producto> listaProductos) {
         this.listaProductos = listaProductos;
-    }
-
-    public List<Usuario> getListaContactos() {
-        return listaContactos;
-    }
-
-    public void setListaContactos(List<Usuario> listaContactos) {
-        this.listaContactos = listaContactos;
     }
 
     @Override
