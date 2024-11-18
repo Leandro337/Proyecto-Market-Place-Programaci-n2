@@ -142,12 +142,6 @@ public class MisProductosViewController {
         alert.showAndWait();
     }
 
-    // Cargar productos en la tabla (Simulando datos estáticos)
-    public void cargarProductos() {
-        // Aquí se agregarían los productos a la tabla
-        productosTableView.getItems().add(new Producto("Producto 1", "imagen1.jpg", 100.0, "Categoría 1"));
-        productosTableView.getItems().add(new Producto("Producto 2", "imagen2.jpg", 200.0, "Categoría 2"));
-    }
 
     // Método para abrir la ventana de edición de producto
     private void openEditProductWindow(Producto product) {

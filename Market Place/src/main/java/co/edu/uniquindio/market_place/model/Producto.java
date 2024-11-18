@@ -9,11 +9,12 @@ public class Producto {
     private String categoria;
     private EstadoProducto estadoProducto;
 
-    public Producto(String nombre, String imagen, double precio, String categoria) {
+    public Producto(String nombre, String imagen, double precio, String categoria, EstadoProducto estadoProducto) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
         this.categoria = categoria;
+        this.estadoProducto = estadoProducto;
     }
 
     public static ProductoBuilder builder() {

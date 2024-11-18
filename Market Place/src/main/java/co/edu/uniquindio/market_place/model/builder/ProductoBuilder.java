@@ -36,6 +36,6 @@ public class ProductoBuilder {
     }
 
     public Producto build() {
-        return new Producto(nombre, imagen, precio, categoria);
+        return new Producto(nombre, imagen, precio, categoria,estadoProducto);
     }
 }
