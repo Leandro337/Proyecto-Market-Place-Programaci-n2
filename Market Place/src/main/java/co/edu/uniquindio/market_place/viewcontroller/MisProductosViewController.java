@@ -1,9 +1,11 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
 import co.edu.uniquindio.market_place.model.Producto;
+import co.edu.uniquindio.market_place.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -13,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 public class MisProductosViewController {
+    private Usuario usuarioActual;
 
     @FXML
     private Button cerrarSesionButton;
@@ -121,11 +124,18 @@ public class MisProductosViewController {
 
             // Cargar el FXML de la pantalla de perfil
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MiPerfil.fxml"));
-            Scene profileScene = new Scene(loader.load());
+            Parent root = loader.load();
+
+            // Obtener el controlador de la vista cargada
+            MiPerfilViewController miPerfilController = loader.getController();
+
+            // Pasar el usuario actual al controlador de "Mi Perfil"
+            miPerfilController.setUsuarioActual(usuarioActual);
 
             // Abrir la nueva ventana de perfil
             Stage profileStage = new Stage();
-            profileStage.setScene(profileScene);
+            profileStage.setScene(new Scene(root));
+            profileStage.setTitle("Mi Perfil");
             profileStage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -163,6 +173,10 @@ public class MisProductosViewController {
         if (selectedProduct != null) {
             System.out.println("Producto seleccionado: " + selectedProduct.getNombre());
         }
+    }
+
+    public void setUsuarioActual(Usuario usuario) {
+        this.usuarioActual = usuario;
     }
 }
 

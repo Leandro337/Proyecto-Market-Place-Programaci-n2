@@ -138,25 +138,30 @@ public class MiPerfilViewController implements Observer {
     }
 
     private void mostrarMisProductos() {
-            try {
-                    // Cargar el archivo FXML de la nueva vista (por ejemplo, MisProductos.fxml)
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MisProductos.fxml"));
-                    Parent root = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MisProductos.fxml"));
+            Parent root = loader.load();
 
-                    // Crear una nueva escena y mostrarla
-                    Stage stage = (Stage) mostrarMisProductosButton.getScene().getWindow(); // Obtiene el escenario actual
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+            // Obtener el controlador de la vista cargada
+            MisProductosViewController misProductosController = loader.getController();
 
-            } catch (Exception e) {
-                    // En caso de error al cargar la nueva vista
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("No se pudo cargar la vista");
-                    alert.setContentText("Hubo un error al intentar mostrar los productos.");
-                    alert.showAndWait();
-            }
+            // Pasar el usuario actual al controlador de "Mis Productos"
+            misProductosController.setUsuarioActual(usuarioActual);
+
+            // Crear una nueva escena y mostrarla
+            Stage stage = (Stage) mostrarMisProductosButton.getScene().getWindow(); // Escenario actual
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No se pudo cargar la vista");
+            alert.setContentText("Hubo un error al intentar mostrar los productos.");
+            alert.showAndWait();
+            e.printStackTrace();
+        }
     }
 
 
