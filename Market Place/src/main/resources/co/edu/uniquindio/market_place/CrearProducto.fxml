@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Pos?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.CrearProductoViewController">
+    <children>
+        <!-- Título -->
+        <Label text="Crear Publicación" layoutX="300.0" layoutY="30.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+
+        <!-- Nombre del Producto -->
+        <Label text="Nombre del Producto:" layoutX="50.0" layoutY="100.0" />
+        <TextField fx:id="nombreProductoField" layoutX="200.0" layoutY="100.0" prefWidth="250.0" />
+
+        <!-- Imagen del Producto -->
+        <Label text="Imagen del Producto (URL):" layoutX="50.0" layoutY="150.0" />
+        <TextField fx:id="imagenProductoField" layoutX="200.0" layoutY="150.0" prefWidth="250.0" />
+
+        <!-- Precio del Producto -->
+        <Label text="Precio del Producto:" layoutX="50.0" layoutY="200.0" />
+        <TextField fx:id="precioProductoField" layoutX="200.0" layoutY="200.0" prefWidth="250.0" />
+
+        <!-- Categoría del Producto -->
+        <Label text="Categoría del Producto:" layoutX="50.0" layoutY="250.0" />
+        <TextField fx:id="categoriaProductoField" layoutX="200.0" layoutY="250.0" prefWidth="250.0" />
+
+        <!-- Estado del Producto -->
+        <Label text="Estado del Producto:" layoutX="50.0" layoutY="300.0" />
+        <ComboBox fx:id="estadoProductoComboBox" layoutX="200.0" layoutY="300.0" prefWidth="250.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Nuevo" />
+                    <String fx:value="Usado" />
+                    <String fx:value="En reparación" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+
+        <!-- Botón Guardar -->
+        <Button fx:id="guardarButton" layoutX="200.0" layoutY="400.0" text="Guardar Publicación" onAction="#onGuardarPublicacion" />
+
+        <!-- Botón Cancelar -->
+        <Button fx:id="cancelarButton" layoutX="400.0" layoutY="400.0" text="Cancelar" onAction="#onCancelar" />
+    </children>
+</AnchorPane>

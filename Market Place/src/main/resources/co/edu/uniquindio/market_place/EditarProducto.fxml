@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="329.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.EditarProductoViewController">
+    <children>
+        <TextField fx:id="nombreTextField" layoutX="90.0" layoutY="70.0" />
+        <TextField fx:id="precioTextField" layoutX="90.0" layoutY="110.0" />
+        <TextField fx:id="categoriaTextField" layoutX="90.0" layoutY="150.0" />
+        <ComboBox fx:id="estadoComboBox" layoutX="90.0" layoutY="190.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Disponible" />
+                    <String fx:value="No disponible" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Button fx:id="guardarButton" layoutX="90.0" layoutY="230.0" onAction="#onGuardarProducto" text="Guardar" />
+        <Button fx:id="cancelarButton" layoutX="200.0" layoutY="230.0" onAction="#onCancelar" text="Cancelar" />
+    </children>
+</AnchorPane>

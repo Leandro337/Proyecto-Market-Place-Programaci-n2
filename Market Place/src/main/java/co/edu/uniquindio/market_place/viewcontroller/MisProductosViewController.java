@@ -1,112 +1,174 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
-import co.edu.uniquindio.market_place.mapping.dto.ProductoDto;
+import co.edu.uniquindio.market_place.model.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class MisProductosViewController {
-    @FXML
-    private Button crearPublicacionButton;
-
-    @FXML
-    private Button editarProductoButton;
 
     @FXML
     private Button cerrarSesionButton;
 
     @FXML
+    private Button editarProductoButton;
+
+    @FXML
+    private Button crearPublicacionButton;
+
+    @FXML
     private Button volverAPerfilButton;
 
     @FXML
-    private ResourceBundle resources;
+    private TableView<Producto> productosTableView; // Usamos Producto como tipo genérico
 
     @FXML
-    private URL location;
+    private TableColumn<Producto, String> nombreProducto;
+    @FXML
+    private TableColumn<Producto, Double> precioProducto;
+    @FXML
+    private TableColumn<Producto, String> categoriaProducto;
+    @FXML
+    private TableColumn<Producto, String> EstadoProducto;
+    @FXML
+    private TableColumn<Producto, String> fechaProducto;
 
     @FXML
-    private ImageView iconUsuario;
-
-    @FXML
-    private Label nombreLabel;
-
-    @FXML
-    private TableColumn<ProductoDto, String> nombreProducto;
-
-    @FXML
-    private TableColumn<ProductoDto, Double> precioProducto;
-
-    @FXML
-    private TableColumn<ProductoDto, String> cantegoriaProducto;
-
-    @FXML
-    private TableView<ProductoDto> estadoProducto;
-
-
-    @FXML
-    void onCerrarSesion(ActionEvent event) {
-        cerrarSesion ();
-    }
-
-    @FXML
-    void onCrearPublicacion(ActionEvent event) {
-        crearPublicacion ();
-    }
-
-    @FXML
-    void onEditarProducto(ActionEvent event) {
-        editarProducto();
-    }
-
-    @FXML
-    void onVolver (ActionEvent event) {
-        volverAPerfil();
-    }
-
-    @FXML
-    void initialize() {
-
-    }
-
-    private void volverAPerfil() {
+    private void onCerrarSesion(ActionEvent event) {
         try {
-            // Cargar el archivo FXML de la vista anterior (MiPerfil.fxml)
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MiPerfil.fxml"));
-            Parent root = loader.load();
+            // Cerrar la ventana actual
+            Stage stage = (Stage) cerrarSesionButton.getScene().getWindow();
+            stage.close();
 
-            // Obtener el escenario actual
-            Stage stage = (Stage) volverAPerfilButton.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            // Cargar el FXML de la pantalla de inicio de sesión
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/IniciarSesion.fxml"));
+            Scene loginScene = new Scene(loader.load());
 
+            // Abrir la nueva ventana de inicio de sesión
+            Stage loginStage = new Stage();
+            loginStage.setScene(loginScene);
+            loginStage.show();
         } catch (Exception e) {
             e.printStackTrace();
-            // Manejo de errores si la carga falla
+            showAlert("Error", "No se pudo cargar la pantalla de inicio de sesión.");
         }
     }
 
-    private void editarProducto() {
 
+    @FXML
+    private void onEditarProducto(ActionEvent event) {
+        Producto selectedProduct = productosTableView.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            try {
+                // Cargar el FXML de la pantalla de edición
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/EditarProducto.fxml"));
+                Scene editProductScene = new Scene(loader.load());
+
+                // Obtener el controlador de la vista cargada y pasarle el producto seleccionado
+                EditarProductoViewController editProductController = loader.getController();
+                editProductController.initData(selectedProduct);
+
+                // Abrir la nueva ventana de edición de producto
+                Stage editProductStage = new Stage();
+                editProductStage.setScene(editProductScene);
+                editProductStage.show();
+
+                // Cerrar la ventana actual
+                Stage stage = (Stage) editarProductoButton.getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert("Error", "No se pudo cargar la pantalla de edición de producto.");
+            }
+        } else {
+            showAlert("Selecciona un producto", "Por favor, selecciona un producto para editar.");
+        }
     }
 
-    private void crearPublicacion() {
+    // Acción para crear una nueva publicación
+    @FXML
+    private void onCrearPublicacion(ActionEvent event) {
+        try {
+            // Cargar el FXML de la pantalla de creación de producto
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/CrearProducto.fxml"));
+            Scene createProductScene = new Scene(loader.load());
 
+            // Abrir la nueva ventana de creación de producto
+            Stage createProductStage = new Stage();
+            createProductStage.setScene(createProductScene);
+            createProductStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "No se pudo cargar la pantalla de creación de publicación.");
+        }
     }
 
-    private void cerrarSesion() {
 
+    @FXML
+    private void onVolver(ActionEvent event) {
+        try {
+            // Cerrar la ventana actual
+            Stage stage = (Stage) volverAPerfilButton.getScene().getWindow();
+            stage.close();
+
+            // Cargar el FXML de la pantalla de perfil
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/MiPerfil.fxml"));
+            Scene profileScene = new Scene(loader.load());
+
+            // Abrir la nueva ventana de perfil
+            Stage profileStage = new Stage();
+            profileStage.setScene(profileScene);
+            profileStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "No se pudo cargar la pantalla de perfil.");
+        }
     }
 
+    // Método auxiliar para mostrar alertas
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // Cargar productos en la tabla (Simulando datos estáticos)
+    public void cargarProductos() {
+        // Aquí se agregarían los productos a la tabla
+        productosTableView.getItems().add(new Producto("Producto 1", "imagen1.jpg", 100.0, "Categoría 1"));
+        productosTableView.getItems().add(new Producto("Producto 2", "imagen2.jpg", 200.0, "Categoría 2"));
+    }
+
+    // Método para abrir la ventana de edición de producto
+    private void openEditProductWindow(Producto product) {
+        // Implementa la lógica para abrir una ventana de edición con los datos del producto
+        // Aquí se puede usar un FXMLLoader para cargar un archivo FXML de edición y pasarlo al controlador
+        System.out.println("Editando producto: " + product.getNombre());
+    }
+
+    // Método para abrir la ventana de creación de producto
+    private void openCreateProductWindow() {
+        // Implementa la lógica para abrir una ventana de creación de producto
+        System.out.println("Abriendo formulario de creación de producto...");
+    }
+
+    // Si quieres realizar alguna acción cuando el mouse se mueva sobre la tabla o la tabla sea clickeada
+    @FXML
+    private void onTableClick() {
+        Producto selectedProduct = productosTableView.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            System.out.println("Producto seleccionado: " + selectedProduct.getNombre());
+        }
+    }
 }
+

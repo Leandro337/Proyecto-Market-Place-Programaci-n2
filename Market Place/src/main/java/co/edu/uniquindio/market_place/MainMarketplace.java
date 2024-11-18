@@ -15,6 +15,7 @@ public class MainMarketplace extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/IniciarSesion.fxml"));
             Parent root = loader.load();
 
+
             // Configurar la escena y el escenario principal
             Scene scene = new Scene(root);
             primaryStage.setTitle("Inicio de sesión");
