@@ -33,9 +33,9 @@
         <ComboBox fx:id="estadoProductoComboBox" layoutX="200.0" layoutY="300.0" prefWidth="250.0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Nuevo" />
-                    <String fx:value="Usado" />
-                    <String fx:value="En reparación" />
+                    <String fx:value="Vendido" />
+                    <String fx:value="Publicado" />
+                    <String fx:value="Cancelado" />
                 </FXCollections>
             </items>
         </ComboBox>
