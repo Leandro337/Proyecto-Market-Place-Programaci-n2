@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -30,7 +29,7 @@ public class MisProductosViewController {
     private Button volverAPerfilButton;
 
     @FXML
-    private TableView<Producto> productosTableView; // Usamos Producto como tipo genérico
+    private TableView<Producto> productosTableView;
 
     @FXML
     private TableColumn<Producto, String> nombreProducto;
@@ -42,6 +41,15 @@ public class MisProductosViewController {
     private TableColumn<Producto, String> EstadoProducto;
     @FXML
     private TableColumn<Producto, String> fechaProducto;
+
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
     @FXML
     private void onCerrarSesion(ActionEvent event) {
@@ -135,21 +143,12 @@ public class MisProductosViewController {
             // Abrir la nueva ventana de perfil
             Stage profileStage = new Stage();
             profileStage.setScene(new Scene(root));
-            profileStage.setTitle("Mi Perfil");
+            profileStage.setTitle("Perfil");
             profileStage.show();
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "No se pudo cargar la pantalla de perfil.");
         }
-    }
-
-    // Método auxiliar para mostrar alertas
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(AlertType.WARNING);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
 

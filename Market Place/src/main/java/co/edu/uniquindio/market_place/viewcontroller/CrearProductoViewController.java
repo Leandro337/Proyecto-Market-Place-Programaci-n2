@@ -37,7 +37,7 @@ public class CrearProductoViewController {
         String imagenUrl = imagenProductoField.getText();
         String precio = precioProductoField.getText();
         String categoria = categoriaProductoField.getText();
-        String estado = estadoProductoComboBox.getValue();
+        EstadoProducto estado = EstadoProducto.valueOf(estadoProductoComboBox.getValue());
 
         // Validar que todos los campos estén llenos
         if (nombre.isEmpty() || imagenUrl.isEmpty() || precio.isEmpty() || categoria.isEmpty() || estado == null) {
@@ -51,8 +51,8 @@ public class CrearProductoViewController {
             double precioProducto = Double.parseDouble(precio);
 
             // Aquí iría el código para guardar la publicación, como enviar los datos a un modelo o base de datos
-            // Ejemplo: Producto producto = new Producto(nombre, imagenUrl, precioProducto, categoria, estado);
-            // ProductoDAO.save(producto);
+            Producto producto = new Producto(nombre, imagenUrl, precioProducto, categoria, estado);
+            //productosTableView.save(producto);
 
             // Mostrar mensaje de éxito
             mostrarAlerta("Éxito", "La publicación se ha guardado correctamente", Alert.AlertType.INFORMATION);
