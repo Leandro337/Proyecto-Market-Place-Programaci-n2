@@ -61,7 +61,7 @@ public class RegistrarViewController {
         if (camposLlenos(false)) {
             Vendedor nuevoVendedor = (Vendedor) crearUsuario(false);
             showMessage("Registro exitoso", "Nuevo vendedor registrado", Alert.AlertType.INFORMATION);
-            IniciarSesionController.registrarVendedor(nuevoVendedor); // Cambia el controlador si es necesario
+            IniciarSesionController.registrarVendedor(nuevoVendedor);  // Este método ahora notificará a los observadores
             abrirVentanaIniciarSesion();
         } else {
             showMessage("Campos incompletos", "Complete todos los campos para registrar al vendedor", Alert.AlertType.ERROR);

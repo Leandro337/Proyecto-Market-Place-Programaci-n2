@@ -1,23 +1,38 @@
 package co.edu.uniquindio.market_place.controller;
 
 import co.edu.uniquindio.market_place.model.Usuario;
-import co.edu.uniquindio.market_place.service.IIniciarSesionController;
+import co.edu.uniquindio.market_place.service.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IniciarSesionController implements IIniciarSesionController {
+public class IniciarSesionController {
     private static List<Usuario> usuariosVendedores = new ArrayList<>();
     private static List<Usuario> usuariosAdministradores = new ArrayList<>();
     private static final String CLAVE_ADMIN = "123";
+    private static List<Observer> observers = new ArrayList<>();  // Lista de observadores
 
-    public static List<Usuario> getUsuariosVendedores() {
-        return usuariosAdministradores;
+    // Método para registrar un observador
+    public static void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    // Método para eliminar un observador
+    public static void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    // Método para notificar a todos los observadores
+    private static void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.actualizarContactosSugeridos();
+        }
     }
 
     // Método para registrar un vendedor
     public static void registrarVendedor(Usuario vendedor) {
         usuariosVendedores.add(vendedor);
+        notifyObservers();  // Notificar a los observadores cuando un nuevo vendedor es registrado
     }
 
     // Método para registrar un administrador

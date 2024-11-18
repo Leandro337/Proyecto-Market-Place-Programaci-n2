@@ -5,22 +5,24 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.market_place.controller.IniciarSesionController;
 import co.edu.uniquindio.market_place.model.Usuario;
 import co.edu.uniquindio.market_place.model.Vendedor;
+import co.edu.uniquindio.market_place.service.Observer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-public class MiPerfilViewController {
+public class MiPerfilViewController implements Observer {
 
-    Usuario usuarioActual;
-
+    private Usuario usuarioActual;
     private ObservableList<String> listaContactosSugeridos = FXCollections.observableArrayList();
 
     @FXML
@@ -80,6 +82,7 @@ public class MiPerfilViewController {
                 abrirVentanaContacto(contactoSeleccionado);
             }
         });
+        IniciarSesionController.addObserver(this);
     }
 
     private void abrirVentanaContacto(String contacto) {
@@ -170,14 +173,13 @@ public class MiPerfilViewController {
         actualizarContactosSugeridos();
     }
 
-    // Método para actualizar la lista de contactos sugeridos con los vendedores registrados
-    private void actualizarContactosSugeridos() {
-        List<Vendedor> vendedores = Vendedor.getListaVendedores();
+    @Override
+    public void actualizarContactosSugeridos() {
+        List<Vendedor> vendedores = Vendedor.getListaVendedores();  // Obtener la lista actualizada de vendedores
         listViewContactosSugeridos.getItems().clear();  // Limpiar la lista actual
 
         // Agregar los nombres de los vendedores a la lista, excepto el usuario actual
         for (Vendedor vendedor : vendedores) {
-            // No añadir al usuario actual a la lista de contactos sugeridos
             if (!vendedor.getNombre().equals(usuarioActual.getNombre())) {
                 listViewContactosSugeridos.getItems().add(vendedor.getNombre());
             }
