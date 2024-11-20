@@ -1,7 +1,8 @@
 package co.edu.uniquindio.market_place.viewcontroller;
 
-import co.edu.uniquindio.market_place.model.Producto;
 import co.edu.uniquindio.market_place.model.EstadoProducto;
+import co.edu.uniquindio.market_place.model.Producto;
+import co.edu.uniquindio.market_place.model.builder.ProductoBuilder;
 import co.edu.uniquindio.market_place.service.ObserverProductoCreado;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -40,7 +41,6 @@ public class CrearProductoViewController {
         estadoProductoComboBox.getItems().setAll(EstadoProducto.values());
     }
 
-
     @FXML
     private void onGuardarPublicacion() {
         String nombre = nombreProductoField.getText();
@@ -60,8 +60,13 @@ public class CrearProductoViewController {
             // Convertir precio a un número
             double precioProducto = Double.parseDouble(precio);
 
-            // Crear el producto
-            Producto producto = new Producto(nombre, precioProducto, categoria, estado);
+            // Crear el producto usando ProductoBuilder
+            Producto producto = new ProductoBuilder()
+                    .nombre(nombre)
+                    .precio(precioProducto)
+                    .categoria(categoria)
+                    .estadoProducto(estado)
+                    .build();
 
             // Notificar al listener sobre el nuevo producto
             if (productoCreadoListener != null) {
