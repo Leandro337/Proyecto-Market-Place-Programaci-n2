@@ -54,6 +54,11 @@ public class IniciarSesionViewController {
     @FXML
     void initialize() {
         iniciarSesionController = new IniciarSesionController();
+
+        // Usuarios de prueba
+        IniciarSesionController.registrarVendedor(new Vendedor("Juan", "Pérez", "12345678", "Calle 1", "Juanes", "111"));
+        IniciarSesionController.registrarVendedor(new Vendedor("María", "López", "87654321", "Calle 2", "Mar", "222"));
+        IniciarSesionController.registrarAdministrador(new Administrador("Admin", "Principal", "00000001", "Oficina 1", "Jorge", "123", "123"));
     }
 
     private void iniciarSesion() {

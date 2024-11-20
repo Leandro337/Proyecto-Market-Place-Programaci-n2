@@ -121,7 +121,6 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
         Producto productoExistente = buscarProducto(nombre);
         if (productoExistente != null) {
             productoExistente.setNombre(producto.getNombre());
-            productoExistente.setImagen(producto.getImagen());
             productoExistente.setPrecio(producto.getPrecio());
             productoExistente.setCategoria(producto.getCategoria());
             productoExistente.setEstadoProducto(producto.getEstadoProducto());

@@ -1,8 +1,10 @@
 package co.edu.uniquindio.market_place.mapping.dto;
 
+import co.edu.uniquindio.market_place.model.EstadoProducto;
+
 public record ProductoDto (
         String nombre,
-        String imagen,
         double precio,
-        String categoria){
+        String categoria,
+        EstadoProducto estadoProducto){
 }

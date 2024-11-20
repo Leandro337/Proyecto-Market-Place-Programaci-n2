@@ -5,18 +5,12 @@ import co.edu.uniquindio.market_place.model.Producto;
 
 public class ProductoBuilder {
     protected String nombre;
-    protected String imagen;
     protected double precio;
     protected String categoria;
     protected EstadoProducto estadoProducto;
 
     public ProductoBuilder nombre(String nombre) {
         this.nombre = nombre;
-        return this;
-    }
-
-    public ProductoBuilder imagen(String imagen) {
-        this.imagen = imagen;
         return this;
     }
 
@@ -36,6 +30,6 @@ public class ProductoBuilder {
     }
 
     public Producto build() {
-        return new Producto(nombre, imagen, precio, categoria,estadoProducto);
+        return new Producto(nombre, precio, categoria,estadoProducto);
     }
 }

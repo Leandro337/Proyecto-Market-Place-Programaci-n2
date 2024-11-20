@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Pos?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.market_place.viewcontroller.CrearProductoViewController">
     <children>
         <!-- Título -->
-        <Label text="Crear Publicación" layoutX="300.0" layoutY="30.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+        <Label layoutX="150.0" layoutY="42.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Crear Publicación" />
 
         <!-- Nombre del Producto -->
-        <Label text="Nombre del Producto:" layoutX="50.0" layoutY="100.0" />
-        <TextField fx:id="nombreProductoField" layoutX="200.0" layoutY="100.0" prefWidth="250.0" />
-
-        <!-- Imagen del Producto -->
-        <Label text="Imagen del Producto (URL):" layoutX="50.0" layoutY="150.0" />
-        <TextField fx:id="imagenProductoField" layoutX="200.0" layoutY="150.0" prefWidth="250.0" />
+        <Label layoutX="48.0" layoutY="131.0" text="Nombre del Producto:" />
+        <TextField fx:id="nombreProductoField" layoutX="198.0" layoutY="131.0" prefWidth="250.0" />
 
         <!-- Precio del Producto -->
-        <Label text="Precio del Producto:" layoutX="50.0" layoutY="200.0" />
-        <TextField fx:id="precioProductoField" layoutX="200.0" layoutY="200.0" prefWidth="250.0" />
+        <Label layoutX="48.0" layoutY="182.0" text="Precio del Producto:" />
+        <TextField fx:id="precioProductoField" layoutX="198.0" layoutY="182.0" prefWidth="250.0" />
 
         <!-- Categoría del Producto -->
-        <Label text="Categoría del Producto:" layoutX="50.0" layoutY="250.0" />
-        <TextField fx:id="categoriaProductoField" layoutX="200.0" layoutY="250.0" prefWidth="250.0" />
+        <Label layoutX="48.0" layoutY="232.0" text="Categoría del Producto:" />
+        <TextField fx:id="categoriaProductoField" layoutX="198.0" layoutY="232.0" prefWidth="250.0" />
 
         <!-- Estado del Producto -->
-        <Label text="Estado del Producto:" layoutX="50.0" layoutY="300.0" />
-        <ComboBox fx:id="estadoProductoComboBox" layoutX="200.0" layoutY="300.0" prefWidth="250.0">
+        <Label layoutX="48.0" layoutY="282.0" text="Estado del Producto:" />
+        <ComboBox fx:id="estadoProductoComboBox" layoutX="198.0" layoutY="282.0" prefWidth="250.0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="Vendido" />
@@ -41,9 +35,9 @@
         </ComboBox>
 
         <!-- Botón Guardar -->
-        <Button fx:id="guardarButton" layoutX="200.0" layoutY="400.0" text="Guardar Publicación" onAction="#onGuardarPublicacion" />
+        <Button fx:id="guardarButton" layoutX="200.0" layoutY="387.0" onAction="#onGuardarPublicacion" text="Guardar Publicación" />
 
         <!-- Botón Cancelar -->
-        <Button fx:id="cancelarButton" layoutX="400.0" layoutY="400.0" text="Cancelar" onAction="#onCancelar" />
+        <Button fx:id="cancelarButton" layoutX="398.0" layoutY="387.0" onAction="#onCancelar" text="Cancelar" />
     </children>
 </AnchorPane>

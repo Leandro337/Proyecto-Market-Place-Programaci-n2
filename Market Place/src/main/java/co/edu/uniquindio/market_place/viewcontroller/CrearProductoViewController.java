@@ -18,9 +18,6 @@ public class CrearProductoViewController {
     private TextField nombreProductoField;
 
     @FXML
-    private TextField imagenProductoField;
-
-    @FXML
     private TextField precioProductoField;
 
     @FXML
@@ -34,13 +31,12 @@ public class CrearProductoViewController {
     @FXML
     private void onGuardarPublicacion() {
         String nombre = nombreProductoField.getText();
-        String imagenUrl = imagenProductoField.getText();
         String precio = precioProductoField.getText();
         String categoria = categoriaProductoField.getText();
         EstadoProducto estado = EstadoProducto.valueOf(estadoProductoComboBox.getValue());
 
         // Validar que todos los campos estén llenos
-        if (nombre.isEmpty() || imagenUrl.isEmpty() || precio.isEmpty() || categoria.isEmpty() || estado == null) {
+        if (nombre.isEmpty() || precio.isEmpty() || categoria.isEmpty() || estado == null) {
             // Mostrar un mensaje de error si algún campo está vacío
             mostrarAlerta("Error", "Todos los campos deben ser completados", Alert.AlertType.ERROR);
             return;
@@ -51,7 +47,7 @@ public class CrearProductoViewController {
             double precioProducto = Double.parseDouble(precio);
 
             // Aquí iría el código para guardar la publicación, como enviar los datos a un modelo o base de datos
-            Producto producto = new Producto(nombre, imagenUrl, precioProducto, categoria, estado);
+            Producto producto = new Producto(nombre, precioProducto, categoria, estado);
             //productosTableView.save(producto);
 
             // Mostrar mensaje de éxito
@@ -83,7 +79,6 @@ public class CrearProductoViewController {
 
     private void limpiarCampos() {
         nombreProductoField.clear();
-        imagenProductoField.clear();
         precioProductoField.clear();
         categoriaProductoField.clear();
         estadoProductoComboBox.getSelectionModel().clearSelection();

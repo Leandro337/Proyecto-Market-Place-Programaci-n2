@@ -68,9 +68,9 @@ public class MarketplaceMapping implements IMarketPlaceMapping {
     public ProductoDto productoToProductoDto(Producto producto) {
         return new ProductoDto(
                 producto.getNombre(),
-                producto.getImagen(),
                 producto.getPrecio(),
-                producto.getCategoria());
+                producto.getCategoria(),
+                producto.getEstadoProducto());
     }
 
 
@@ -78,9 +78,9 @@ public class MarketplaceMapping implements IMarketPlaceMapping {
     public Producto productoDtoToProducto(ProductoDto productoDto) {
         return Producto.builder()
                 .nombre(productoDto.nombre())
-                .imagen(productoDto.imagen())
                 .precio(productoDto.precio())
                 .categoria(productoDto.categoria())
+                .estadoProducto(productoDto.estadoProducto())
                 .build();
     }
 
