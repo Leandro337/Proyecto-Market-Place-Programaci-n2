@@ -7,13 +7,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MarketPlace implements ICrudProducto, ICrudVendedor {
-    private final int claveAdmin = 1030;
-    private List<Usuario> listaVendedores;
-    private List <Producto> listaProductos;
+    private static MarketPlace instance; // Instancia única de la clase
 
-    public MarketPlace(){
+    private final int claveAdmin = 123;
+    private List<Usuario> listaVendedores;
+    private List<Producto> listaProductos;
+
+    // Constructor privado para evitar instanciación directa
+    private MarketPlace() {
         this.listaVendedores = new ArrayList<>();
         this.listaProductos = new ArrayList<>();
+    }
+
+    // Método estático para obtener la instancia única
+    public static MarketPlace getInstance() {
+        if (instance == null) {
+            synchronized (MarketPlace.class) { // Bloqueo para garantizar seguridad en entornos multihilo
+                if (instance == null) {
+                    instance = new MarketPlace();
+                }
+            }
+        }
+        return instance;
     }
 
     public int getClaveAdmin() {
@@ -24,25 +39,20 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
         this.listaVendedores = listaVendedores;
     }
 
-
-
-
     //------------------------CRUD VENDEDOR------------------------------//
 
     public List<Usuario> getListaVendedores() {
         return listaVendedores;
     }
 
-
-
     public boolean crearVendedor(Usuario newUsuario) {
-      boolean vendedorEncontrado = verificarVendedorExistente(newUsuario.getCedula());
-      if (vendedorEncontrado) {
-          return false;
-      } else {
-          listaVendedores.add(newUsuario);
-          return true;
-      }
+        boolean vendedorEncontrado = verificarVendedorExistente(newUsuario.getCedula());
+        if (vendedorEncontrado) {
+            return false;
+        } else {
+            listaVendedores.add(newUsuario);
+            return true;
+        }
     }
 
     public boolean eliminarVendedor(String cedula) {
@@ -55,7 +65,7 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
         return false;
     }
 
-    public boolean actualizarVendedor(String cedula, Usuario usuario){
+    public boolean actualizarVendedor(String cedula, Usuario usuario) {
         Usuario usuarioExistente = buscarVendedor(cedula);
         if (usuarioExistente != null) {
             usuarioExistente.setNombre(usuario.getNombre());
@@ -69,26 +79,23 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
     }
 
     public Usuario buscarVendedor(String cedula) {
-        for(Usuario usuario : listaVendedores) {
+        for (Usuario usuario : listaVendedores) {
             if (usuario.getCedula().equals(cedula)) {
                 return usuario;
             }
         }
-        System.out.println("No se encontro el vendedor con la cedula: " + cedula);
+        System.out.println("No se encontró el vendedor con la cédula: " + cedula);
         return null;
     }
 
-
-    public boolean verificarVendedorExistente(String cedula){
-        for(Usuario usuario : getListaVendedores()) {
+    public boolean verificarVendedorExistente(String cedula) {
+        for (Usuario usuario : getListaVendedores()) {
             if (usuario.getCedula().equals(cedula)) {
                 return true;
             }
         }
         return false;
     }
-
-
 
     //------------------------CRUD PRODUCTO------------------------------//
 
@@ -99,6 +106,7 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
     public void setListaProductos(List<Producto> listaProductos) {
         this.listaProductos = listaProductos;
     }
+
     public boolean crearProducto(Producto newProducto) {
         if (newProducto != null) {
             getListaProductos().add(newProducto);
@@ -130,35 +138,26 @@ public class MarketPlace implements ICrudProducto, ICrudVendedor {
     }
 
     public Producto buscarProducto(String nombre) {
-        for(Producto producto : listaProductos) {
+        for (Producto producto : listaProductos) {
             if (producto.getNombre().equals(nombre)) {
                 return producto;
             }
         }
-        System.out.println("No se encontro el vendedor");
+        System.out.println("No se encontró el producto");
         return null;
     }
 
-
-    public boolean verificarProductoExistente(String nombre){
-        Producto productoExistente = null;
+    public boolean verificarProductoExistente(String nombre) {
         for (Producto producto : listaProductos) {
             if (producto.getNombre().equals(nombre)) {
-                productoExistente = producto;
-                break;
+                return false;
             }
         }
-
-        if (productoExistente == null) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
+    //------------------------------INICIO DE SESIÓN---------------------------------------------------------
 
-
-
-//------------------------------INICIO DE SESIÓN ---------------------------------------------------------
     public Usuario iniciarSesion(String usuario, String contrasenia) {
         for (Usuario usuarioExistente : getListaVendedores()) {
             if (usuarioExistente.getUsuario().equals(usuario) && usuarioExistente.getContrasena().equals(contrasenia)) {
