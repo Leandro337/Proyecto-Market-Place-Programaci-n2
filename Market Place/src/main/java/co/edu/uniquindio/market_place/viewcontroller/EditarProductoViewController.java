@@ -28,9 +28,15 @@ public class EditarProductoViewController {
     @FXML
     private ComboBox<EstadoProducto> estadoComboBox;
 
+
     private Producto productoOriginal;
 
     private MisProductosViewController misProductosController;
+
+    // Configura el controlador de la ventana de productos para actualizar la lista
+    public void setMisProductosController(MisProductosViewController controller) {
+        this.misProductosController = controller;
+    }
 
     public void initData(Producto producto) {
         this.productoOriginal = producto;
@@ -48,11 +54,6 @@ public class EditarProductoViewController {
         estadoComboBox.setValue(producto.getEstadoProducto());
     }
 
-
-    // Configura el controlador de la ventana de productos para actualizar la lista
-    public void setMisProductosController(MisProductosViewController controller) {
-        this.misProductosController = controller;
-    }
 
     @FXML
     private void onGuardarProducto() {

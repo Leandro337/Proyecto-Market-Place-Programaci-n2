@@ -8,7 +8,6 @@ import co.edu.uniquindio.market_place.model.Producto;
 import co.edu.uniquindio.market_place.model.Usuario;
 import co.edu.uniquindio.market_place.service.IModelFactoryService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModelFactory implements IModelFactoryService {
@@ -27,15 +26,7 @@ public class ModelFactory implements IModelFactoryService {
         mapper = new MarketplaceMapping();
         marketPlace = new MarketPlace();
 
-        inicializarDatos();
-
     }
-
-    private void inicializarDatos() {
-        //initVendedores();
-    }
-
-
 
     public MarketPlace getMarketPlace (){
         return marketPlace;

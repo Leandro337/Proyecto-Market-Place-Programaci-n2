@@ -16,8 +16,6 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 
-import static com.almasb.fxgl.dsl.FXGLForKtKt.showMessage;
-
 public class RegistrarViewController {
 
     @FXML
