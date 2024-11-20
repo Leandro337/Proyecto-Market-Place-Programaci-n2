@@ -51,4 +51,7 @@ public class Producto {
         this.estadoProducto = estadoProducto;
     }
 
+    public Object getEstado() {
+        return estadoProducto;
+    }
 }

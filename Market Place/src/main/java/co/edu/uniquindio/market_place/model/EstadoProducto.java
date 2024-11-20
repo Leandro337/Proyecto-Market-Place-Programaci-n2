@@ -1,9 +1,9 @@
 package co.edu.uniquindio.market_place.model;
 
 public enum EstadoProducto {
-    VENDIDO("Disponible"),
-    PUBLICADO("No disponible"),
-    CANCELADO("Vendido");
+    VENDIDO("Vendio"),
+    PUBLICADO("Publicado"),
+    CANCELADO("Cancelado");
 
     private final String descripcion;
 

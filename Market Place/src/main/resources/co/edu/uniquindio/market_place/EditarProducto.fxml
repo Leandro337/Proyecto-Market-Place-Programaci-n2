@@ -13,8 +13,9 @@
         <ComboBox fx:id="estadoComboBox" layoutX="90.0" layoutY="190.0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Disponible" />
-                    <String fx:value="No disponible" />
+                    <String fx:value="Vendido" />
+                    <String fx:value="Publicado" />
+                    <String fx:value="Cancelado" />
                 </FXCollections>
             </items>
         </ComboBox>

@@ -2,9 +2,13 @@ package co.edu.uniquindio.market_place.viewcontroller;
 
 import co.edu.uniquindio.market_place.model.Producto;
 import co.edu.uniquindio.market_place.model.Usuario;
+import co.edu.uniquindio.market_place.service.ObserverProductoCreado;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -13,7 +17,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class MisProductosViewController {
+import java.util.ArrayList;
+
+public class MisProductosViewController implements ObserverProductoCreado {
     private Usuario usuarioActual;
 
     @FXML
@@ -42,6 +48,21 @@ public class MisProductosViewController {
     @FXML
     private TableColumn<Producto, String> fechaProducto;
 
+    private ObservableList<Producto> productos = FXCollections.observableArrayList(); // Lista observable de productos
+
+    @FXML
+    private void initialize() {
+        productosTableView.setItems(productos); // Vincula la TableView con la lista observable
+
+        nombreProducto.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue().getNombre()));
+        precioProducto.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue().getPrecio()));
+        categoriaProducto.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue().getCategoria()));
+        EstadoProducto.setCellValueFactory(cellData ->
+                new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue().getEstado().toString()));
+    }
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -50,6 +71,22 @@ public class MisProductosViewController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public void actualizarProducto(Producto productoActualizado) {
+        // Buscar el producto en la lista y actualizar sus valores
+        for (int i = 0; i < productos.size(); i++) {
+            if (productos.get(i).getNombre() == productoActualizado.getNombre()) {
+                // Reemplazar los valores del producto con los nuevos datos
+                productos.get(i).setNombre(productoActualizado.getNombre());
+                productos.get(i).setPrecio(productoActualizado.getPrecio());
+                productos.get(i).setCategoria(productoActualizado.getCategoria());
+                productos.get(i).setEstadoProducto(productoActualizado.getEstadoProducto());
+                break;  // Salir del bucle una vez que se actualice el producto
+            }
+        }
+        productosTableView.refresh(); // Refrescamos la TableView para reflejar los cambios
+    }
+
 
     @FXML
     private void onCerrarSesion(ActionEvent event) {
@@ -72,7 +109,6 @@ public class MisProductosViewController {
         }
     }
 
-
     @FXML
     private void onEditarProducto(ActionEvent event) {
         Producto selectedProduct = productosTableView.getSelectionModel().getSelectedItem();
@@ -85,15 +121,12 @@ public class MisProductosViewController {
                 // Obtener el controlador de la vista cargada y pasarle el producto seleccionado
                 EditarProductoViewController editProductController = loader.getController();
                 editProductController.initData(selectedProduct);
+                editProductController.setMisProductosController(this); // Pasamos el controlador
 
-                // Abrir la nueva ventana de edición de producto
+                // Abrir la nueva ventana de edición de producto sin cerrar la ventana de Mis Productos
                 Stage editProductStage = new Stage();
                 editProductStage.setScene(editProductScene);
                 editProductStage.show();
-
-                // Cerrar la ventana actual
-                Stage stage = (Stage) editarProductoButton.getScene().getWindow();
-                stage.close();
             } catch (Exception e) {
                 e.printStackTrace();
                 showAlert("Error", "No se pudo cargar la pantalla de edición de producto.");
@@ -103,23 +136,38 @@ public class MisProductosViewController {
         }
     }
 
+
     // Acción para crear una nueva publicación
     @FXML
     private void onCrearPublicacion(ActionEvent event) {
         try {
             // Cargar el FXML de la pantalla de creación de producto
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/market_place/CrearProducto.fxml"));
-            Scene createProductScene = new Scene(loader.load());
+            Parent root = loader.load();
+
+            // Obtener el controlador de la vista cargada
+            CrearProductoViewController crearProductoController = loader.getController();
+
+            // Registrar el controlador actual como listener
+            crearProductoController.setProductoCreadoListener(this);
 
             // Abrir la nueva ventana de creación de producto
-            Stage createProductStage = new Stage();
-            createProductStage.setScene(createProductScene);
-            createProductStage.show();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "No se pudo cargar la pantalla de creación de publicación.");
         }
+    }
+
+    @Override
+    public void onProductoCreado(Producto producto) {
+
+        // Actualizar la TableView
+        productosTableView.getItems().add(producto);
+
     }
 
 
@@ -148,29 +196,6 @@ public class MisProductosViewController {
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "No se pudo cargar la pantalla de perfil.");
-        }
-    }
-
-
-    // Método para abrir la ventana de edición de producto
-    private void openEditProductWindow(Producto product) {
-        // Implementa la lógica para abrir una ventana de edición con los datos del producto
-        // Aquí se puede usar un FXMLLoader para cargar un archivo FXML de edición y pasarlo al controlador
-        System.out.println("Editando producto: " + product.getNombre());
-    }
-
-    // Método para abrir la ventana de creación de producto
-    private void openCreateProductWindow() {
-        // Implementa la lógica para abrir una ventana de creación de producto
-        System.out.println("Abriendo formulario de creación de producto...");
-    }
-
-    // Si quieres realizar alguna acción cuando el mouse se mueva sobre la tabla o la tabla sea clickeada
-    @FXML
-    private void onTableClick() {
-        Producto selectedProduct = productosTableView.getSelectionModel().getSelectedItem();
-        if (selectedProduct != null) {
-            System.out.println("Producto seleccionado: " + selectedProduct.getNombre());
         }
     }
 

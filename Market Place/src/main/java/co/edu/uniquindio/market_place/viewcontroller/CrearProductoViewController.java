@@ -2,6 +2,7 @@ package co.edu.uniquindio.market_place.viewcontroller;
 
 import co.edu.uniquindio.market_place.model.Producto;
 import co.edu.uniquindio.market_place.model.EstadoProducto;
+import co.edu.uniquindio.market_place.service.ObserverProductoCreado;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -24,31 +25,48 @@ public class CrearProductoViewController {
     private TextField categoriaProductoField;
 
     @FXML
-    private ComboBox<String> estadoProductoComboBox;
+    private ComboBox<EstadoProducto> estadoProductoComboBox;
+
+    private ObserverProductoCreado productoCreadoListener; // Listener para notificar la creación
+
+    // Método para registrar el listener
+    public void setProductoCreadoListener(ObserverProductoCreado listener) {
+        this.productoCreadoListener = listener;
+    }
+
+    @FXML
+    public void initialize() {
+        // Agregar los valores del enum al ComboBox
+        estadoProductoComboBox.getItems().setAll(EstadoProducto.values());
+    }
 
 
-    // Método para guardar la publicación
     @FXML
     private void onGuardarPublicacion() {
         String nombre = nombreProductoField.getText();
         String precio = precioProductoField.getText();
         String categoria = categoriaProductoField.getText();
-        EstadoProducto estado = EstadoProducto.valueOf(estadoProductoComboBox.getValue());
+
+        // Obtener el estado seleccionado del ComboBox (ahora es un valor de EstadoProducto)
+        EstadoProducto estado = estadoProductoComboBox.getValue();
 
         // Validar que todos los campos estén llenos
         if (nombre.isEmpty() || precio.isEmpty() || categoria.isEmpty() || estado == null) {
-            // Mostrar un mensaje de error si algún campo está vacío
             mostrarAlerta("Error", "Todos los campos deben ser completados", Alert.AlertType.ERROR);
             return;
         }
 
         try {
-            // Convertir precio a un número (puedes agregar más validaciones si lo deseas)
+            // Convertir precio a un número
             double precioProducto = Double.parseDouble(precio);
 
-            // Aquí iría el código para guardar la publicación, como enviar los datos a un modelo o base de datos
+            // Crear el producto
             Producto producto = new Producto(nombre, precioProducto, categoria, estado);
-            //productosTableView.save(producto);
+
+            // Notificar al listener sobre el nuevo producto
+            if (productoCreadoListener != null) {
+                productoCreadoListener.onProductoCreado(producto);
+            }
 
             // Mostrar mensaje de éxito
             mostrarAlerta("Éxito", "La publicación se ha guardado correctamente", Alert.AlertType.INFORMATION);
